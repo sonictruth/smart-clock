@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto+Condensed:wght@300&display=swap');
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.condensed {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.mono {
+  font-family: 'Major Mono Display', monospace;
+} 
+
+body, html {
+  margin: 0;
+  background-color: black;
+  color: #ECDBBA;
+}
