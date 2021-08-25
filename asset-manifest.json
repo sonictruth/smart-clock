@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/smart-clock/static/css/main.41319aba.chunk.css",
-    "main.js": "/smart-clock/static/js/main.56ae8ab7.chunk.js",
-    "main.js.map": "/smart-clock/static/js/main.56ae8ab7.chunk.js.map",
+    "main.js": "/smart-clock/static/js/main.e3f00132.chunk.js",
+    "main.js.map": "/smart-clock/static/js/main.e3f00132.chunk.js.map",
     "runtime-main.js": "/smart-clock/static/js/runtime-main.77ff5518.js",
     "runtime-main.js.map": "/smart-clock/static/js/runtime-main.77ff5518.js.map",
     "static/js/2.ed835772.chunk.js": "/smart-clock/static/js/2.ed835772.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.77ff5518.js",
     "static/js/2.ed835772.chunk.js",
     "static/css/main.41319aba.chunk.css",
-    "static/js/main.56ae8ab7.chunk.js"
+    "static/js/main.e3f00132.chunk.js"
   ]
 }
