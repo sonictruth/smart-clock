@@ -1,20 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto+Condensed:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto+Condensed:wght@300&display=swap");
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .condensed {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .mono {
-  font-family: 'Major Mono Display', monospace;
-} 
+  font-family: "Major Mono Display", monospace;
+}
 
-body, html {
+body,
+html,
+#root {
+  width: 100%;
+  height: 100%;
   margin: 0;
   background-color: black;
-  color: #ECDBBA;
+  color: #ecdbba;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
+}
+
+iframe {
+  border: 0;
 }
