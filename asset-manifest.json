@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/smart-clock/static/css/main.41319aba.chunk.css",
-    "main.js": "/smart-clock/static/js/main.e3f00132.chunk.js",
-    "main.js.map": "/smart-clock/static/js/main.e3f00132.chunk.js.map",
+    "main.css": "/smart-clock/static/css/main.e4d025ab.chunk.css",
+    "main.js": "/smart-clock/static/js/main.9aba18f2.chunk.js",
+    "main.js.map": "/smart-clock/static/js/main.9aba18f2.chunk.js.map",
     "runtime-main.js": "/smart-clock/static/js/runtime-main.77ff5518.js",
     "runtime-main.js.map": "/smart-clock/static/js/runtime-main.77ff5518.js.map",
-    "static/js/2.ed835772.chunk.js": "/smart-clock/static/js/2.ed835772.chunk.js",
-    "static/js/2.ed835772.chunk.js.map": "/smart-clock/static/js/2.ed835772.chunk.js.map",
+    "static/js/2.633c2047.chunk.js": "/smart-clock/static/js/2.633c2047.chunk.js",
+    "static/js/2.633c2047.chunk.js.map": "/smart-clock/static/js/2.633c2047.chunk.js.map",
     "static/js/3.6dc34002.chunk.js": "/smart-clock/static/js/3.6dc34002.chunk.js",
     "static/js/3.6dc34002.chunk.js.map": "/smart-clock/static/js/3.6dc34002.chunk.js.map",
     "index.html": "/smart-clock/index.html",
-    "static/css/main.41319aba.chunk.css.map": "/smart-clock/static/css/main.41319aba.chunk.css.map",
-    "static/js/2.ed835772.chunk.js.LICENSE.txt": "/smart-clock/static/js/2.ed835772.chunk.js.LICENSE.txt"
+    "static/css/main.e4d025ab.chunk.css.map": "/smart-clock/static/css/main.e4d025ab.chunk.css.map",
+    "static/js/2.633c2047.chunk.js.LICENSE.txt": "/smart-clock/static/js/2.633c2047.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.77ff5518.js",
-    "static/js/2.ed835772.chunk.js",
-    "static/css/main.41319aba.chunk.css",
-    "static/js/main.e3f00132.chunk.js"
+    "static/js/2.633c2047.chunk.js",
+    "static/css/main.e4d025ab.chunk.css",
+    "static/js/main.9aba18f2.chunk.js"
   ]
 }
