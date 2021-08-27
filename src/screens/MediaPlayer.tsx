@@ -3,7 +3,7 @@ import React, {
     useState,
     useEffect,
 } from 'react';
-import Time from './Time';
+import Time from './components/Time';
 import ReactPlayer from 'react-player';
 import { findDOMNode } from 'react-dom';
 import screenfull from 'screenfull';
@@ -72,8 +72,8 @@ function MediaPlayer() {
             <br />
             <ul>
                 {config.mediaPlayerStreams.map((stream: any, key: number) =>
-                    <li>
-                        <button key={key} onClick={() => setURL(stream.url)}>{stream.name}</button>
+                    <li key={key} >
+                        <button onClick={() => setURL(stream.url)}>{stream.name}</button>
                     </li>
                 )}
             </ul>

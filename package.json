@@ -21,7 +21,8 @@
     "react-scripts": "4.0.3",
     "screenfull": "^5.1.0",
     "typescript": "^4.3.5",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "zustand": "^3.5.10"
   },
   "scripts": {
     "start": "HTTPS=true react-scripts start",

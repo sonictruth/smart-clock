@@ -1,9 +1,10 @@
-import Time from './screens/Time';
-import Weather from './screens/Weather';
 // import YouToubePlayer from './screens/YouToubePlayer';
 import MediaPlayer from './screens/MediaPlayer';
+import MainScreen from './screens/MainScreen';
 
 const config: any = {};
+
+config.updateIntervalSeconds = 10;
 
 config.youtubePlaylistURL = 'https://www.youtube.com/embed/videoseries?list=PLywsZdsYYHTZNdHTYDNooq86TCJLPCjoK';
 
@@ -30,12 +31,8 @@ config.routes = [
         component: MediaPlayer,
     },
     {
-        path: "/weather",
-        component: Weather
-    },
-    {
         path: "/",
-        component: Time
+        component: MainScreen
     },
 ];
 
