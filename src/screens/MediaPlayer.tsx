@@ -8,7 +8,7 @@ import ReactPlayer from 'react-player';
 import { findDOMNode } from 'react-dom';
 import screenfull from 'screenfull';
 import config from '../config';
-import './MediaPlayer.css';
+import './MediaPlayer.scss';
 
 function MediaPlayer() {
     const playerRef = useRef(null);

@@ -39,4 +39,15 @@ config.routes = [
     },
 ];
 
+// TODO: Move to env variable
+config.weather = {
+    key: '5a7cef30eb5cb1750171f99e9988dc7d',
+    locationLabel: 'Barcelona',
+    lat: 41.376681,
+    lon: 2.176177,
+    lang: 'en',
+    unit: 'metric'
+}
+
+
 export default config;

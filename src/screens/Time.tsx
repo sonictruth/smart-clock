@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Time.css';
+import './Time.scss';
 
 function Time() {
     const [date, setDate] = useState(new Date());
@@ -14,6 +14,9 @@ function Time() {
     }
     return <div className="Time">
         {date.toLocaleTimeString()}
+        <button className="button is-primary">
+            Primary button
+        </button>
     </div>;
 }
 
