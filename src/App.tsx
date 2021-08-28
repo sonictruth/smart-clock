@@ -6,7 +6,27 @@ import {
   useHistory,
 } from 'react-router-dom';
 
-import config from './config';
+import MediaPlayer from './screens/MediaPlayer';
+import MainScreen from './screens/MainScreen';
+
+const config = {
+  routes: [
+    /*
+    {
+        path: "/YouToubePlayer",
+        component: YouToubePlayer,
+    },
+    */
+    {
+        path: "/MediaPlayer",
+        component: MediaPlayer,
+    },
+    {
+        path: "/",
+        component: MainScreen
+    },
+  ],
+}
 
 function App() {
   const [touchStart, setTouchStart] = React.useState(0);
