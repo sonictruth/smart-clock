@@ -37,7 +37,7 @@ function MainScreen() {
     function getRandomBackgrounnd() {
         return backgrounds[Math.floor(Math.random() * backgrounds.length)];
     }
-    return <div style={{ backgroundImage: `url(/smart-clock/backgrounds/${backgroundURL})` }} className="MainScreen">
+    return <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/backgrounds/${backgroundURL})` }} className="MainScreen">
         <div className="top">
             <Time />
         </div>
