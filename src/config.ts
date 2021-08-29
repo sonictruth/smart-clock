@@ -34,11 +34,17 @@ const config = {
             url: 'https://stream1.1616.ro:1945/prima/livestream/playlist.m3u8?wowzatokenhash=hOdIznDoakApEuQ8FaFI3yrJuBMZHqCB7B3cWTmRWsc=',
         },
         {
+            name: 'Antena 3',
+            url: 'https://ivm.antenaplay.ro/live/a3/playlist.m3u8',
+        },
+        {
+            name: 'Antena 1',
+            url: 'https://ivm.antenaplay.ro/live/a1/playlist.m3u8',
+        },
+        {
             name: 'Kanal D',
             url: 'https://stream1.kanald.ro/iphone/live.m3u8',
         },
-
-
       
         {
             name: 'iCat',
