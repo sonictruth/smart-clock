@@ -18,12 +18,12 @@ const config = {
     },
     */
     {
-        path: "/MediaPlayer",
-        component: MediaPlayer,
+      path: "/MediaPlayer",
+      component: MediaPlayer,
     },
     {
-        path: "/",
-        component: MainScreen
+      path: "/",
+      component: MainScreen
     },
   ],
 }
@@ -34,20 +34,23 @@ function App() {
   const history = useHistory();
 
   const getPosition = (event: any): number =>
-    event.clientX || event.targetTouches[0].clientX;
+    event.clientX || (
+      (event.targetTouches && event.targetTouches.length > 0) ?
+      event.targetTouches[0].clientX : 0
+    );
 
   const handleTouchStart = (event: any) => {
     setTouchStart(getPosition(event));
     setTouchEnd(getPosition(event));
   }
-    
+
   const handleTouchMove = (event: any) => {
     setTouchEnd(getPosition(event));
   }
 
   const handleTouchEnd = (event: any) => {
 
-   
+
 
     const currentLocation = history.location.pathname;
     const currentLocationRouteIndex = config.routes.findIndex(
@@ -62,7 +65,7 @@ function App() {
       if (nextLocationRouteIndex < 0) {
         nextLocationRouteIndex = config.routes.length - 1;
       }
-      
+
     };
 
     if (touchStart - touchEnd < -50) {
@@ -70,10 +73,10 @@ function App() {
       if (nextLocationRouteIndex > config.routes.length - 1) {
         nextLocationRouteIndex = 0;
       }
-     
+
     }
 
-    if(nextLocationRouteIndex !== null) {
+    if (nextLocationRouteIndex !== null) {
       history.push(config.routes[nextLocationRouteIndex].path);
     }
     setTouchStart(0);

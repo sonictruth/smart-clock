@@ -1,10 +1,14 @@
 const config = {
 
-    updateIntervalSeconds: 18000,
+    updateIntervalSeconds: 14400,
 
     youtubePlaylistURL: 'https://www.youtube.com/embed/videoseries?list=PLywsZdsYYHTZNdHTYDNooq86TCJLPCjoK',
 
     mediaPlayerStreams: [
+        {
+            name: 'LoFi',
+            url: 'https://www.youtube.com/watch?v=5qap5aO4i9A',
+        },
         {
             name: 'EuroNews',
             url: 'https://www.youtube.com/watch?v=sPgqEHsONK8',
@@ -45,7 +49,10 @@ const config = {
             name: 'Kanal D',
             url: 'https://stream1.kanald.ro/iphone/live.m3u8',
         },
-      
+        {
+            name: 'Radio 3',
+            url: 'https://rtvelivestreamv3.akamaized.net/rne_r3_main.m3u8'
+        },
         {
             name: 'iCat',
             url: 'https://directes-radio-int.ccma.cat/int/mp4:icatfm/playlist.m3u8'
@@ -54,10 +61,8 @@ const config = {
     // TODO: Move to env variable
     weather: {
         key: '5a7cef30eb5cb1750171f99e9988dc7d',
-        locationLabel: 'Barcelona',
-        lat: 41.376681,
-        lon: 2.176177,
-        lang: 'en',
+        latitude: 41.376681,
+        longitude: 2.176177,
         unit: 'metric'
     }
 }
