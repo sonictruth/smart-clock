@@ -1,7 +1,5 @@
 const config = {
 
-    updateIntervalSeconds: 14400,
-
     youtubePlaylistURL: 'https://www.youtube.com/embed/videoseries?list=PLywsZdsYYHTZNdHTYDNooq86TCJLPCjoK',
 
     mediaPlayerStreams: [
@@ -84,7 +82,8 @@ const config = {
         longitude: 2.176177,
         units: 'metric',
         tempSymbol: '°C',
-        lang: 'en'
+        lang: 'en',
+        weatherUpdateIntervalSeconds: 10800,
     }
 }
 

@@ -5,7 +5,6 @@ import config from '../../config';
 
 const tempSymbol: string = config.weather.tempSymbol;
 
-
 function getDayPeriodFromUnixTS(ts: number): string {
     return new Date(ts * 1000).toLocaleString(undefined, { weekday: 'long', dayPeriod: 'short' })
 }

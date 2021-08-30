@@ -2,11 +2,18 @@ import create from 'zustand';
 import config from './config';
 
 const weatherConfig = config.weather;
+const weatherUpdateIntervalMs = weatherConfig.weatherUpdateIntervalSeconds * 1000;
 const key = weatherConfig.key;
+const positionTimeoutMs = 10 * 1000;
 
 async function getCoordinates() {
     return new Promise( (resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject);
+        const timeout = setTimeout( ()=> reject(), positionTimeoutMs);;
+        navigator.geolocation.getCurrentPosition(position => {
+            clearTimeout(timeout);
+            resolve(position);
+        }, reject);
+        
     });
 }
 
@@ -16,6 +23,7 @@ async function getLocation() {
         longitude: weatherConfig.longitude
     }
     try {
+  
         const position:any = await getCoordinates();
         location.latitude = position.coords.latitude;
         location.longitude = position.coords.longitude;
@@ -29,18 +37,22 @@ async function getLocation() {
 const useStore = create(
     set => {
         async function setWeather() {
+     
             const location = await getLocation();
-            const params = `units=${weatherConfig.units}&lang=${weatherConfig.lang}&lat=${location.latitude}&lon=${location.longitude}&exclude=minutely,hourly&appid=${key}`
-            const response =
-                await fetch(`https://api.openweathermap.org/data/2.5/onecall?${params}`);
+           
+            const params = `units=${weatherConfig.units}&lang=${weatherConfig.lang}&lat=${location.latitude}&lon=${location.longitude}&exclude=minutely,hourly&appid=${key}`;
+            const url = `https://api.openweathermap.org/data/2.5/onecall?${params}`;
+
+            const response = await fetch(url);
             set({ weather: await response.json() });
         };
 
         setInterval(() => set({ date: new Date() }), 1000);
-        setInterval(() => setWeather(), config.updateIntervalSeconds * 1000);
+        setInterval(() => setWeather(), weatherUpdateIntervalMs);
         setWeather();
         fetch('https://dai.google.com/linear/hls/event/OQfdjUhHSDSlb1fJVzehsQ/master.m3u8');
         return ({ date: new Date(), weather: null })
     })
+
 
 export default useStore;

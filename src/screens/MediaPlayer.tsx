@@ -101,7 +101,7 @@ function MediaPlayer() {
                     <select
                         defaultValue={url}
                         onChange={event => setAndSaveURL(event.target.value)}>
-                        {config.mediaPlayerStreams.map((stream: any, key: number) =>
+                        {streams.map((stream: any, key: number) =>
                             <option
                                 key={key}
                                 value={stream.url}>
