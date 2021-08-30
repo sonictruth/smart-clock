@@ -30,7 +30,7 @@ const config = {
         },   
         {
             name: '3/24',
-            url: 'https://directes-tv-int.ccma.cat/int/ngrp:324_web/master.m3u8',
+            url: 'https://directes-tv-int.ccma.cat/int/ngrp:324_web/chunklist_b1728000.m3u8',
             isRadio: false,
         },
         {
