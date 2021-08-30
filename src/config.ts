@@ -75,9 +75,9 @@ const config = {
             isRadio: false,
         }
     ],
-    // TODO: Move to env variable
+
     weather: {
-        key: '5a7cef30eb5cb1750171f99e9988dc7d',
+        key: process.env.REACT_APP_OPEN_WEATHER_KEY,
         latitude: 41.376681,
         longitude: 2.176177,
         units: 'metric',
@@ -86,5 +86,5 @@ const config = {
         weatherUpdateIntervalSeconds: 10800,
     }
 }
-
+console.log(process.env);
 export default config;

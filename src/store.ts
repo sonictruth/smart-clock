@@ -4,7 +4,7 @@ import config from './config';
 const weatherConfig = config.weather;
 const weatherUpdateIntervalMs = weatherConfig.weatherUpdateIntervalSeconds * 1000;
 const key = weatherConfig.key;
-const positionTimeoutMs = 10 * 1000;
+const positionTimeoutMs = 5000;
 
 async function getCoordinates() {
     return new Promise( (resolve, reject) => {
@@ -23,7 +23,6 @@ async function getLocation() {
         longitude: weatherConfig.longitude
     }
     try {
-  
         const position:any = await getCoordinates();
         location.latitude = position.coords.latitude;
         location.longitude = position.coords.longitude;
@@ -44,13 +43,13 @@ const useStore = create(
             const url = `https://api.openweathermap.org/data/2.5/onecall?${params}`;
 
             const response = await fetch(url);
+
             set({ weather: await response.json() });
         };
 
         setInterval(() => set({ date: new Date() }), 1000);
         setInterval(() => setWeather(), weatherUpdateIntervalMs);
         setWeather();
-        fetch('https://dai.google.com/linear/hls/event/OQfdjUhHSDSlb1fJVzehsQ/master.m3u8');
         return ({ date: new Date(), weather: null })
     })
 
