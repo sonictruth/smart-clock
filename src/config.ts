@@ -83,7 +83,7 @@ const config = {
         units: 'metric',
         tempSymbol: '°C',
         lang: 'en',
-        weatherUpdateIntervalSeconds: 10800,
+        weatherUpdateIntervalSeconds: 3600,
     }
 }
 

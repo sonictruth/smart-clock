@@ -3,22 +3,28 @@ import WeatherIcon from 'react-icons-weather';
 import './Weather.scss';
 import config from '../../config';
 
-const tempSymbol: string = config.weather.tempSymbol;
+const temperatureSymbol: string = config.weather.tempSymbol;
 
 function getDayPeriodFromUnixTS(ts: number): string {
-    return new Date(ts * 1000).toLocaleString(undefined, { weekday: 'long', dayPeriod: 'short' })
+    return new Date(ts * 1000).toLocaleString(
+        undefined, { weekday: 'long', dayPeriod: 'short' }
+    )
 }
 
 function getDayOfWeeekeStringFromUnixTS(ts: number) {
-    return new Date(ts * 1000).toLocaleDateString('en', { weekday: 'short', day: 'numeric' })
+    return new Date(ts * 1000).toLocaleDateString(
+        'en', { weekday: 'short', day: 'numeric' }
+    )
 }
 
 function getKmPerHourFromMetersPerSecond(metersPerSecond: string) {
-    return Math.round((parseFloat(metersPerSecond) * 3.6)).toString() + 'Km/h';
+    return Math.round(
+        (parseFloat(metersPerSecond) * 3.6)
+    ).toString() + 'Km/h';
 }
 
 function getFormatedTemperature(temp: string) {
-    return Math.round(parseFloat(temp)) + tempSymbol;
+    return Math.round(parseFloat(temp)) + temperatureSymbol;
 }
 
 function Weather(props: any) {
@@ -35,7 +41,8 @@ function Weather(props: any) {
                         <WeatherIcon
                             name="owm"
                             iconId={weather.current.weather[0].id.toString()} />
-                        &nbsp;&nbsp;{getFormatedTemperature(weather.current.temp)}
+                        &nbsp;&nbsp;
+                        {getFormatedTemperature(weather.current.temp)}
                     </div>
                     :
                     <div className="WeatherBackground">

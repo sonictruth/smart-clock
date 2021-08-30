@@ -7,13 +7,13 @@ const key = weatherConfig.key;
 const positionTimeoutMs = 5000;
 
 async function getCoordinates() {
-    return new Promise( (resolve, reject) => {
-        const timeout = setTimeout( ()=> reject(), positionTimeoutMs);;
+    return new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => reject(), positionTimeoutMs);;
         navigator.geolocation.getCurrentPosition(position => {
             clearTimeout(timeout);
             resolve(position);
         }, reject);
-        
+
     });
 }
 
@@ -23,7 +23,7 @@ async function getLocation() {
         longitude: weatherConfig.longitude
     }
     try {
-        const position:any = await getCoordinates();
+        const position: any = await getCoordinates();
         location.latitude = position.coords.latitude;
         location.longitude = position.coords.longitude;
     } catch (error) {
@@ -36,12 +36,14 @@ async function getLocation() {
 const useStore = create(
     set => {
         async function setWeather() {
-     
-            const location = await getLocation();
-           
-            const params = `units=${weatherConfig.units}&lang=${weatherConfig.lang}&lat=${location.latitude}&lon=${location.longitude}&exclude=minutely,hourly&appid=${key}`;
-            const url = `https://api.openweathermap.org/data/2.5/onecall?${params}`;
 
+            const location = await getLocation();
+
+            const params = `units=${weatherConfig.units}&lang=${weatherConfig.lang}&lat=${location.latitude}&lon=${location.longitude}&exclude=minutely,hourly&appid=${key}`;
+            let url = `https://api.openweathermap.org/data/2.5/onecall?${params}`;
+            if (!key) {
+                url = `https://www.sonicpix.ro/owproxy/?${params}`;
+            }
             const response = await fetch(url);
 
             set({ weather: await response.json() });

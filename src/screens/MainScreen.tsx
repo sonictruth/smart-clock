@@ -13,7 +13,7 @@ const backgrounds = [
     'v13.gif',
 ];
 
-const backgroundUpdateIntervalSeconds = 3600;
+const backgroundUpdateIntervalSeconds = 900;
 
 function MainScreen() {
     const [backgroundURL, setBackgroundURL] = useState(getRandomBackgrounnd());
