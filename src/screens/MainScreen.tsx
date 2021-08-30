@@ -14,6 +14,11 @@ const backgrounds = [
 ];
 
 const backgroundUpdateIntervalSeconds = 900;
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+const isLite = params.isLite && params.isLite === 'true';
+
+console.log(isLite);
 
 function MainScreen() {
     const [backgroundURL, setBackgroundURL] = useState(getRandomBackgrounnd());
@@ -32,8 +37,8 @@ function MainScreen() {
     function getRandomBackgrounnd() {
         return backgrounds[Math.floor(Math.random() * backgrounds.length)];
     }
-    return <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/backgrounds/${backgroundURL})` }} className="MainScreen">
-        <div className="top">
+    return <div style={isLite ? {} : { backgroundImage: `url(${process.env.PUBLIC_URL}/backgrounds/${backgroundURL})` }} className="MainScreen">
+        <div className="top" >
             <Time />
         </div>
         <div className="bottom">

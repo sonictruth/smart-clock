@@ -49,9 +49,6 @@ function App() {
   }
 
   const handleTouchEnd = (event: any) => {
-
-
-
     const currentLocation = history.location.pathname;
     const currentLocationRouteIndex = config.routes.findIndex(
       (route: any) =>
