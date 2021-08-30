@@ -4,7 +4,7 @@ _digital signage_
 
 App to display time, weather, videos and other things on a tablet-like device. 
 
-(Demo)[https://sonictruth.github.io/smart-clock/]. Swipe to go to the next screen.
+[Demo](https://sonictruth.github.io/smart-clock/). Swipe to go to the next screen.
 
 Optionally use [Fully Kiosk Browser](https://www.fully-kiosk.com/#get-kiosk-apps).
 
