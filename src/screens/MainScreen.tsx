@@ -10,11 +10,6 @@ const backgrounds = [
     'v5.gif',
     'v6.gif',
     'v7.gif',
-    'v8.gif',
-    'v9.gif',
-    'v10.gif',
-    'v11.gif',
-    'v12.gif',
     'v13.gif',
 ];
 
