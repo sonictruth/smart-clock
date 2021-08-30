@@ -13,9 +13,12 @@ function getDayOfWeeekeStringFromUnixTS(ts: number) {
     return new Date(ts * 1000).toLocaleDateString('en', { weekday: 'short', day: 'numeric' })
 }
 
+function getKmPerHourFromMetersPerSecond(metersPerSecond: string) {
+    return Math.round((parseFloat(metersPerSecond) * 3.6)).toString() + 'Km/h';
+}
 
-function getKmPerHourFromMetersPerSecond(metersPerSecond: number) {
-    return (metersPerSecond * 3.6).toFixed(1);
+function getFormatedTemperature(temp: string) {
+    return Math.round(parseFloat(temp)) + tempSymbol;
 }
 
 function Weather(props: any) {
@@ -32,7 +35,7 @@ function Weather(props: any) {
                         <WeatherIcon
                             name="owm"
                             iconId={weather.current.weather[0].id.toString()} />
-                        &nbsp;&nbsp;{weather.current.temp}{tempSymbol}
+                        &nbsp;&nbsp;{getFormatedTemperature(weather.current.temp)}
                     </div>
                     :
                     <div className="WeatherBackground">
@@ -46,11 +49,12 @@ function Weather(props: any) {
                                     <WeatherIcon
                                         name="owm"
                                         iconId={weather.current.weather[0].id.toString()} />
-                                    &nbsp;&nbsp;{weather.current.temp}{tempSymbol}
+                                    &nbsp;&nbsp;
+                                    {getFormatedTemperature(weather.current.temp)}
                                 </div>
 
                                 <div className="column WeatherWind">
-                                    W: {getKmPerHourFromMetersPerSecond(weather.current.wind_speed)}Km/h
+                                    W: {getKmPerHourFromMetersPerSecond(weather.current.wind_speed)}
                                 </div>
                             </div>
                         </div>
@@ -64,7 +68,9 @@ function Weather(props: any) {
                                         <div className="WeatherIcon"><WeatherIcon
                                             name="owm"
                                             iconId={day.weather[0].id.toString()} /></div>
-                                        <div>{day.temp.day}{tempSymbol}</div>
+                                        <div>
+                                            {getFormatedTemperature(day.temp.day)}
+                                        </div>
                                     </div>
                                 )}
                             </div>
