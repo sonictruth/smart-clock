@@ -18,8 +18,6 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 const isLite = params.isLite && params.isLite === 'true';
 
-console.log(isLite);
-
 function MainScreen() {
     const [backgroundURL, setBackgroundURL] = useState(getRandomBackgrounnd());
 
