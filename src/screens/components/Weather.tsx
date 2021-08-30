@@ -28,7 +28,6 @@ function getFormatedTemperature(temp: string) {
 }
 
 function Weather(props: any) {
-
     const weather: any = useStore((state: any) => state.weather);
 
     const isSimple: boolean = props.simple;
@@ -48,7 +47,7 @@ function Weather(props: any) {
                     :
                     <div className="WeatherBackground">
                         <div className="WeatherCurrent">
-                            <div className="columns">
+                            <div className="columns is-mobile">
                                 <div className="column WeatherHumidity">
                                     H: {weather.current.humidity}%
                                 </div>
@@ -68,7 +67,7 @@ function Weather(props: any) {
                         </div>
 
                         <div className="WeatherDaily">
-                            <div className="columns">
+                            <div className="columns is-mobile">
                                 {weather.daily.map((day: any, key: number) =>
                                     <div key={key}
                                         className="column">
