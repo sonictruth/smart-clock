@@ -86,5 +86,5 @@ const config = {
         weatherUpdateIntervalSeconds: 10800,
     }
 }
-console.log(process.env);
+
 export default config;
