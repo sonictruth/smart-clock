@@ -11,6 +11,7 @@ import config from '../config';
 import './MediaPlayer.scss';
 
 const mediaURLLocalStorageKey = 'mediaURL';
+const streams = config.mediaPlayerStreams;
 
 function MediaPlayer() {
     const playerRef = useRef(null);
@@ -18,7 +19,7 @@ function MediaPlayer() {
     const [playing, setPlaying] = useState(false);
 
     const [url, setURL] = useState(
-        localStorage.getItem(mediaURLLocalStorageKey) || config.mediaPlayerStreams[0].url
+        localStorage.getItem(mediaURLLocalStorageKey) || streams[0].url
     );
 
     const handleVolumeChange = (event: any) => {
@@ -50,9 +51,12 @@ function MediaPlayer() {
 
     return <div className="MediaPlayer" >
         <div className="MediaPlayerScreen">
+            <div className="MediaPlayerScreenName">
+               <div>{ (streams.find(stream => stream.url === url))?.name }</div>
+            </div>
             <ReactPlayer
+                className="MediaPlayerReactPlayer"
                 ref={playerRef}
-                className='react-player'
                 width='100%'
                 height='100%'
                 url={url}

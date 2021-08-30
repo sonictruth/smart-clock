@@ -5,6 +5,24 @@
   grid-template-areas: "screen" "botttom";
   .MediaPlayerScreen {
     grid-area: screen;
+    position: relative;
+    .MediaPlayerReactPlayer{
+      position: relative;
+      z-index: 2;
+    }
+    .MediaPlayerScreenName{
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      font-size: 5em;
+      z-index: 1;
+      > div {
+        text-align: center;
+        margin-top: 20%;
+      }
+    }
   }
   .MediaPlayerBottom {
     > div {
