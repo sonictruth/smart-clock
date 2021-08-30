@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
-.App {
-    height: 100%;
-  }
-
 $purple: #8a4d76;
 $pink: #fa7c91;
 $brown: #757763;
@@ -25,10 +21,28 @@ $input-shadow: none;
 
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/utilities/mixins.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/grid/_all.sass";
 @import "../node_modules/bulma/sass/elements/button.sass";
 @import "../node_modules/bulma/sass/form/_all.sass";
 
-
 @import "../node_modules/input-range-scss/inputrange";
+
+
+.App {
+  font-size: 12pt;
+  height: 100%;
+  @include mobile {
+    font-size: 5pt;
+  }
+  @include tablet {
+    font-size: 7pt;
+  }
+  @include desktop {
+    font-size: 12pt;
+  }
+  @include widescreen {
+    font-size: 13pt;
+  }
+}
