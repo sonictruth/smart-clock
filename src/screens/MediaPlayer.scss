@@ -1,19 +1,26 @@
 .MediaPlayer {
   height: 100%;
   display: grid;
-  grid-template-columns: 70% 30%;
-  grid-template-rows: 80% 20%;
-  grid-template-areas:
-    "screen controls"
-    "time time";
-}
+  grid-template-rows: 90% 10%;
+  grid-template-areas: "screen" "botttom";
+  .MediaPlayerScreen {
+    grid-area: screen;
+  }
+  .MediaPlayerBottom {
+    > div {
+      float: left;
+      margin: 20px;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    margin: 20px;
+    grid-area: botttom;
+    font-size: 1.5em;
+    margin: auto;
 
-.MediaPlayerScreen {
-  grid-area: screen;
-}
-.MediaPlayerTime {
-  grid-area: time;
-}
-.MediaPlayerControls {
-  grid-area: controls;
+    select {
+      background-color: #363636;
+      color: white;
+    }
+  }
 }

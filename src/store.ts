@@ -30,14 +30,16 @@ const useStore = create(
     set => {
         async function setWeather() {
             const location = await getLocation();
+            const params = `units=${weatherConfig.units}&lang=${weatherConfig.lang}&lat=${location.latitude}&lon=${location.longitude}&exclude=minutely,hourly&appid=${key}`
             const response =
-                await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&exclude=minutely,hourly&appid=${key}`);;
+                await fetch(`https://api.openweathermap.org/data/2.5/onecall?${params}`);
             set({ weather: await response.json() });
         };
 
         setInterval(() => set({ date: new Date() }), 1000);
         setInterval(() => setWeather(), config.updateIntervalSeconds * 1000);
         setWeather();
+        fetch('https://dai.google.com/linear/hls/event/OQfdjUhHSDSlb1fJVzehsQ/master.m3u8');
         return ({ date: new Date(), weather: null })
     })
 

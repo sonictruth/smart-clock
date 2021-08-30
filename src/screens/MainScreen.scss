@@ -3,20 +3,21 @@
     background-size: cover;
     height: 100%;
     display: grid;
-    grid-template-rows: 70% 30%;
+    grid-template-rows: 60% 40%;
     grid-template-areas: 
     "top"
     "bottom";
     .top {
+        margin: auto;
         grid-area: top;  
-        font-size: 25em;
+        font-size: 22em;
         line-height: 1.2em;
     }
     .bottom {
-        overflow: hidden;
+        margin: auto;
         font-size: 2.2em;
         grid-area: bottom;  
-        margin-left: 50px;
-        margin-right: 50px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }

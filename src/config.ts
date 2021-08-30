@@ -6,10 +6,6 @@ const config = {
 
     mediaPlayerStreams: [
         {
-            name: 'LoFi',
-            url: 'https://www.youtube.com/watch?v=5qap5aO4i9A',
-        },
-        {
             name: 'EuroNews',
             url: 'https://www.youtube.com/watch?v=sPgqEHsONK8',
         },
@@ -23,15 +19,15 @@ const config = {
         },
         {
             name: 'Digi24',
-            url: 'https://dai.google.com/linear/hls/pa/event/OQfdjUhHSDSlb1fJVzehsQ/stream/c3f6c010-88ac-4f94-9d53-a8b4187941f5:BRU/variant/3fb6388b913e3f69ed30aa07c842fbc3/bandwidth/1477770.m3u8',
-        },
-        {
-            name: '324',
-            url: 'https://directes-tv-int.ccma.cat/int/ngrp:324_web/master.m3u8',
+            url: 'https://dai.google.com/linear/hls/event/OQfdjUhHSDSlb1fJVzehsQ/master.m3u8',
         },
         {
             name: 'TVRi',
             url: 'https://mn-nl.mncdn.com/tvri_test/smil:tvri_test.smil/playlist.m3u8',
+        },   
+        {
+            name: '3/24',
+            url: 'https://directes-tv-int.ccma.cat/int/ngrp:324_web/master.m3u8',
         },
         {
             name: 'PrimaTV',
@@ -46,10 +42,6 @@ const config = {
             url: 'https://ivm.antenaplay.ro/live/a1/playlist.m3u8',
         },
         {
-            name: 'Kanal D',
-            url: 'https://stream1.kanald.ro/iphone/live.m3u8',
-        },
-        {
             name: 'Radio 3',
             url: 'https://rtvelivestreamv3.akamaized.net/rne_r3_main.m3u8'
         },
@@ -57,13 +49,28 @@ const config = {
             name: 'iCat',
             url: 'https://directes-radio-int.ccma.cat/int/mp4:icatfm/playlist.m3u8'
         },
+        {
+            name: 'RadioParadise',
+            url: 'http://stream.radioparadise.com/aac-128',
+        },
+        {
+            name: 'LoFi',
+            url: 'https://www.youtube.com/watch?v=5qap5aO4i9A',
+        },
+        // Weekly updated yourube playlist
+        {
+            name: 'UK Weekly Playlist',
+            url: 'https://youtube.com/playlist?list=PLx0sYbCqOb8Q_CLZC2BdBSKEEB59BOPUM',
+        }
     ],
     // TODO: Move to env variable
     weather: {
         key: '5a7cef30eb5cb1750171f99e9988dc7d',
         latitude: 41.376681,
         longitude: 2.176177,
-        unit: 'metric'
+        units: 'metric',
+        tempSymbol: '°C',
+        lang: 'en'
     }
 }
 

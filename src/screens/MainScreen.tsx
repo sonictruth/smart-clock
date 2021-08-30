@@ -18,7 +18,7 @@ const backgrounds = [
     'v13.gif',
 ];
 
-const backggroundUpdateIntervalSeconds = 100;
+const backgroundUpdateIntervalSeconds = 3600;
 
 function MainScreen() {
     const [backgroundURL, setBackgroundURL] = useState(getRandomBackgrounnd());
@@ -26,7 +26,7 @@ function MainScreen() {
     useEffect(() => {
         const timerID = setInterval(() => setBackgroundURL(
             getRandomBackgrounnd()),
-            backggroundUpdateIntervalSeconds * 1000
+            backgroundUpdateIntervalSeconds * 1000
         );
 
         return function cleanup() {
