@@ -6,10 +6,6 @@
   .MediaPlayerScreen {
     grid-area: screen;
     position: relative;
-    .MediaPlayerReactPlayer{
-      position: relative;
-      z-index: 2;
-    }
     .MediaPlayerScreenName{
       position: absolute;
       left: 0;

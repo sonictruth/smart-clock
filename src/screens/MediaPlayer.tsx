@@ -22,6 +22,8 @@ function MediaPlayer() {
         localStorage.getItem(mediaURLLocalStorageKey) || streams[0].url
     );
 
+    const currentStream = (streams.find(stream => stream.url === url));
+
     const handleVolumeChange = (event: any) => {
         setVolume(parseFloat(event.target.value));
     }
@@ -51,10 +53,14 @@ function MediaPlayer() {
 
     return <div className="MediaPlayer" >
         <div className="MediaPlayerScreen">
-            <div className="MediaPlayerScreenName">
-               <div>{ (streams.find(stream => stream.url === url))?.name }</div>
-            </div>
+            {currentStream?.isRadio &&
+                <div className="MediaPlayerScreenName">
+                    <div>{currentStream.name}</div>
+                </div>
+            }
+
             <ReactPlayer
+
                 className="MediaPlayerReactPlayer"
                 ref={playerRef}
                 width='100%'
