@@ -1,6 +1,6 @@
 # Smart Clock - _digital signage_
 
-Smart Clock is a React light app that displays time, weather, videos (maybe other things in the future) on a tablet-like device or anything with a browser. 
+Smart Clock is a light web application written in React that displays time, weather, videos (maybe other things in the future) on a tablet-like device or anything with a browser. 
 
 Kindle 1 2011 (Upgraded to slimp ROM) running Smart Slock under Fully.
 <img src="screen.png">
