@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
 
 $purple: #8a4d76;
 $pink: #fa7c91;
@@ -6,7 +6,7 @@ $brown: #757763;
 $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
 
-$family-sans-serif: 'Comfortaa', cursive;
+$family-sans-serif: "Comfortaa", cursive;
 $grey-dark: $brown;
 $grey-light: $beige-light;
 $primary: $purple;
@@ -29,7 +29,6 @@ $input-shadow: none;
 
 @import "../node_modules/input-range-scss/inputrange";
 
-
 .App {
   font-size: 12pt;
   height: 100%;
@@ -44,5 +43,24 @@ $input-shadow: none;
   }
   @include widescreen {
     font-size: 13pt;
+  }
+}
+
+.AppPortrait {
+  display: none;
+}
+
+@media screen and (orientation: portrait) {
+  .AppPortrait{
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: black;
+    font-size: 2em;
+    padding: 20px;
   }
 }

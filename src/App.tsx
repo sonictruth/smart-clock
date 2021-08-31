@@ -89,6 +89,9 @@ function App() {
       onTouchMove={handleTouchMove}
       onTouchStart={handleTouchStart}
     >
+      <div className="AppPortrait">
+        Please rotate your device.
+      </div>
       <Switch>
         {config.routes.map((route: any, i: number) => (
           <Route
