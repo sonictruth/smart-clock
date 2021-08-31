@@ -5,13 +5,13 @@ Smart Clock is a light web application written in React that displays time, weat
 Kindle 1 2011 (Upgraded to slimp ROM) running Smart Clock using Fully.
 <img src="screen.png">
 
-[Demo with animated backgrounds](https://sonictruth.github.io/smart-clock/). 
-[Demo with no animation](https://sonictruth.github.io/smart-clock/?isLite=true). 
+- [Demo with animated backgrounds](https://sonictruth.github.io/smart-clock/). 
+- [Demo with no animation](https://sonictruth.github.io/smart-clock/?isLite=true). 
 
-Swipe to go to the next screen.
+**⚠️ Swipe left or right (using mouse or touch) to changee screen.**
 
 Use [Fully Kiosk Browser](https://www.fully-kiosk.com/#get-kiosk-apps) or 
-_Add to Home screen_ for a full screen experience.
+[Add to Home screen](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Add_to_home_screen) for a full screen experience.
 
 ### Start
 ```REACT_APP_OPEN_WEATHER_URL=https://api.openweathermap.org/data/2.5/onecall REACT_APP_OPEN_WEATHER_KEY=xxxxxxxx npm run start```
