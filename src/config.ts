@@ -77,7 +77,8 @@ const config = {
     ],
 
     weather: {
-        key: process.env.REACT_APP_OPEN_WEATHER_KEY,
+        apiURL: process.env.REACT_APP_OPEN_WEATHER_URL || 'https://www.sonicpix.ro/owproxy/',
+        apiKey: process.env.REACT_APP_OPEN_WEATHER_KEY || 'nokey',
         latitude: 41.376681,
         longitude: 2.176177,
         units: 'metric',

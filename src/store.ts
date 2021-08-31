@@ -3,7 +3,8 @@ import config from './config';
 
 const weatherConfig = config.weather;
 const weatherUpdateIntervalMs = weatherConfig.weatherUpdateIntervalSeconds * 1000;
-const key = weatherConfig.key;
+const apiKey = weatherConfig.apiKey;
+const apiURL = weatherConfig.apiURL;
 const positionTimeoutMs = 5000;
 
 async function getCoordinates() {
@@ -39,12 +40,17 @@ const useStore = create(
 
             const location = await getLocation();
 
-            const params = `units=${weatherConfig.units}&lang=${weatherConfig.lang}&lat=${location.latitude}&lon=${location.longitude}&exclude=minutely,hourly&appid=${key}`;
-            let url = `https://api.openweathermap.org/data/2.5/onecall?${params}`;
-            if (!key) {
-                url = `https://www.sonicpix.ro/owproxy/?${params}`;
-            }
-            const response = await fetch(url);
+            const params = new URLSearchParams({
+                units: weatherConfig.units,
+                lang: weatherConfig.lang,
+                lat: location.latitude.toString(),
+                lon: location.longitude.toString(),
+                exclude: 'minutely,hourly',
+                appid: apiKey,
+            }).toString()
+
+            const callURL = `${apiURL}?${params}`;
+            const response = await fetch(callURL);
 
             set({ weather: await response.json() });
         };

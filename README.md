@@ -11,7 +11,7 @@ Use [Fully Kiosk Browser](https://www.fully-kiosk.com/#get-kiosk-apps) or
 _Add to Home screen_ for a full screen experience.
 
 ### Start
-```REACT_APP_OPEN_WEATHER_KEY=xxxxxxxx npm run start```
+```REACT_APP_OPEN_WEATHER_URL=https://api.openweathermap.org/data/2.5/onecall REACT_APP_OPEN_WEATHER_KEY=xxxxxxxx npm run start```
 
 ### Deploy
-```REACT_APP_OPEN_WEATHER_KEY=xxxxxxxx npm run deploy```
+```REACT_APP_OPEN_WEATHER_URL=https://api.openweathermap.org/data/2.5/onecall REACT_APP_OPEN_WEATHER_KEY=xxxxxxxx npm run deploy```
