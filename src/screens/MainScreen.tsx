@@ -13,17 +13,19 @@ const backgrounds = [
     'v13.gif',
 ];
 
-const backgroundUpdateIntervalSeconds = 900;
+const liteBackgrounds = Array.from(Array(40).keys()).map( index => `d${index+1}.jpeg`);
+
+const backgroundUpdateIntervalSeconds = 600;
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 const isLite = params.isLite && params.isLite === 'true';
 
 function MainScreen() {
-    const [backgroundURL, setBackgroundURL] = useState(getRandomBackgrounnd());
+    const [backgroundURL, setBackgroundURL] = useState(getRandomBackground());
 
     useEffect(() => {
         const timerID = setInterval(() => setBackgroundURL(
-            getRandomBackgrounnd()),
+            getRandomBackground()),
             backgroundUpdateIntervalSeconds * 1000
         );
 
@@ -32,10 +34,11 @@ function MainScreen() {
         };
     });
 
-    function getRandomBackgrounnd() {
-        return backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    function getRandomBackground() {
+        const collection = isLite ? liteBackgrounds : backgrounds;
+        return collection[Math.floor(Math.random() * collection.length)];
     }
-    return <div style={isLite ? {} : { backgroundImage: `url(${process.env.PUBLIC_URL}/backgrounds/${backgroundURL})` }} className="MainScreen">
+    return <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/backgrounds/${backgroundURL})` }} className="MainScreen">
         <div className="top" >
             <Time />
         </div>
