@@ -28,11 +28,8 @@ function MainScreen() {
             getRandomBackground()),
             backgroundUpdateIntervalSeconds * 1000
         );
-
-        return function cleanup() {
-            clearInterval(timerID);
-        };
-    });
+        return () => clearInterval(timerID);
+    }, []);
 
     function getRandomBackground() {
         const collection = isLite ? liteBackgrounds : backgrounds;

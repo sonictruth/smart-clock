@@ -5,8 +5,8 @@ import React, {
 import Time from './components/Time';
 import Weather from './components/Weather';
 import ReactPlayer from 'react-player';
-import { findDOMNode } from 'react-dom';
-import screenfull from 'screenfull';
+// import { findDOMNode } from 'react-dom';
+// import screenfull from 'screenfull';
 import config from '../config';
 import './MediaPlayer.scss';
 
@@ -40,7 +40,7 @@ function MediaPlayer() {
         onMouseUp: handleStopPropagating
     };
 
-
+    /*
     const handleClickFullscreen = () => {
         if (screenfull.isEnabled) {
             if (playerRef.current) {
@@ -50,6 +50,7 @@ function MediaPlayer() {
             }
         }
     }
+    */
 
     return <div className="MediaPlayer" >
         <div className="MediaPlayerScreen">
