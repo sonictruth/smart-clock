@@ -53,30 +53,32 @@ function MediaPlayer() {
 
     return <div className="MediaPlayer" >
         <div className="MediaPlayerScreen">
-            {url === '' &&
-                <div className="MediaPlayerWelcome">
-                    When a channel is playing swipe in the clock area to go to the next screen.
-                </div>
-            }
+
             {currentStream?.isRadio &&
                 <div className="MediaPlayerScreenName">
                     <div>{currentStream.name}</div>
                 </div>
             }
-
-            <ReactPlayer
-
-                className="MediaPlayerReactPlayer"
-                ref={playerRef}
-                width='100%'
-                height='100%'
-                url={url}
-                playing={playing}
-                controls={false}
-                loop={true}
-                volume={volume}
-                onReady={() => setTimeout(() => setPlaying(true), 1000)}
-            />
+            {!url &&
+                <div className="MediaPlayerWelcome">
+                    <h1>Media Player 📺</h1>
+                    When a channel is playing swipe in the clock area to go to the next screen.
+                </div>
+            }
+            {url &&
+                <ReactPlayer
+                    className="MediaPlayerReactPlayer"
+                    ref={playerRef}
+                    width='100%'
+                    height='100%'
+                    url={url}
+                    playing={playing}
+                    controls={false}
+                    loop={true}
+                    volume={volume}
+                    onReady={() => setTimeout(() => setPlaying(true), 1000)}
+                />
+            }
         </div>
 
         <div className="MediaPlayerBottom">
@@ -95,20 +97,13 @@ function MediaPlayer() {
                     onChange={handleVolumeChange} />
             </div>
             <div {...disableTouchProps}>
-                <button
-                    className="button is-small is-dark"
-                    onClick={handleClickFullscreen}>
-                    Fullscreen
-                </button>
-            </div>
-            <div {...disableTouchProps}>
                 <div className="select is-small is-dark">
                     <select
                         defaultValue={url}
                         onChange={event => setAndSaveURL(event.target.value)}>
                         <option
                             value=''>
-                            Choose channel
+                            ⇨ Choose channel
                         </option>
                         {streams.map((stream: any, key: number) =>
                             <option
