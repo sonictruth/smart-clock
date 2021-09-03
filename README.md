@@ -6,7 +6,7 @@ Kindle 1 2011 (Upgraded to slimp ROM) running Smart Clock using Fully.
 <img src="screen.png">
 
 - [Demo with no animation](https://sonictruth.github.io/smart-clock/). 
-- [Demo with animated backgrounds](https://sonictruth.github.io/smart-clock/?animate=true). 
+- [Demo with animated backgrounds](https://sonictruth.github.io/smart-clock/?animated=true). 
 
 
 **⚠️ Swipe left or right (using mouse or touch) to changee screen.**

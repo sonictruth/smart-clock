@@ -18,7 +18,7 @@ const backgrounds = Array.from(Array(40).keys()).map(index => `d${index + 1}.jpe
 const backgroundUpdateIntervalSeconds = 600;
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
-const isUsingAnimatedBackgrounds = params.animation && params.animation === 'true';
+const isUsingAnimatedBackgrounds = (params.animated && params.animated === 'true');
 
 function MainScreen() {
     const [backgroundURL, setBackgroundURL] = useState(getRandomBackground());
@@ -32,7 +32,8 @@ function MainScreen() {
     }, []);
 
     function getRandomBackground() {
-        const collection = isUsingAnimatedBackgrounds ? backgrounds : animatedBackgrounds;
+        const collection = isUsingAnimatedBackgrounds ? animatedBackgrounds : backgrounds ;
+        console.log(isUsingAnimatedBackgrounds)
         return collection[Math.floor(Math.random() * collection.length)];
     }
     return <div
