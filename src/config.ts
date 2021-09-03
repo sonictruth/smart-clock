@@ -21,6 +21,22 @@ const config = {
             url: 'https://www.youtube.com/watch?v=9Auq9mYxFEE',
             isRadio: false,
         },
+        // Stream pre-processing for handling tokens, scraping, selecting specific streams 
+        {
+            id: '150',
+            name: 'Digi 24 Low',
+            url: async () => {
+                const response =
+                    await fetch('https://dai.google.com/linear/hls/event/OQfdjUhHSDSlb1fJVzehsQ/master.m3u8');
+                const playlist =
+                    await response.text();
+                const url = playlist
+                    .split('\n')
+                    .find(line => line.includes('bandwidth/2917391.m3u8'));
+                return url;
+            },
+            isRadio: false,
+        },
         {
             id: '40',
             name: 'Digi24',
@@ -88,22 +104,6 @@ const config = {
             url: 'https://youtube.com/playlist?list=PLx0sYbCqOb8Q_CLZC2BdBSKEEB59BOPUM',
             isRadio: false,
         },
-        // Stream pre-processing for handling tokens, scraping, selecting specific streams 
-        {
-            id: '150',
-            name: 'Digi 24 Low',
-            url: async () => {
-                const response =
-                    await fetch('https://dai.google.com/linear/hls/event/OQfdjUhHSDSlb1fJVzehsQ/master.m3u8');
-                const playlist =
-                    await response.text();
-                const url = playlist
-                    .split('\n')
-                    .find(line => line.includes('bandwidth/2917391.m3u8'));
-                return url;
-            },
-            isRadio: false,
-        }
     ],
 
     weather: {
