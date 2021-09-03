@@ -1,4 +1,5 @@
 import React, {
+    useEffect,
     useRef,
     useState,
 } from 'react';
@@ -10,27 +11,40 @@ import ReactPlayer from 'react-player';
 import config from '../config';
 import './MediaPlayer.scss';
 
-const mediaURLLocalStorageKey = 'mediaURL';
+const streamIDLocalStorageKey = 'mediaURL';
 const streams = config.mediaPlayerStreams;
 
 function MediaPlayer() {
     const playerRef = useRef(null);
     const [volume, setVolume] = useState(1);
     const [playing, setPlaying] = useState(false);
-
-    const [url, setURL] = useState(
-        localStorage.getItem(mediaURLLocalStorageKey) || ''
+    const [streamID, setSteamID] = useState(
+        localStorage.getItem(streamIDLocalStorageKey) || ''
     );
+    const [url, setURL] = useState('');
+    const currentStream = (streams.find(stream => stream.id === streamID));
 
-    const currentStream = (streams.find(stream => stream.url === url));
+    useEffect(() => {
+        (async () => {
+            let url = '';
+            if (currentStream) {
+                if (typeof currentStream.url === 'function') {
+                    url = await currentStream.url() || '';
+                } else {
+                    url = currentStream.url;
+                }
+            }
+            setURL(url);
+        })();
+    }, [currentStream]);
 
     const handleVolumeChange = (event: any) => {
         setVolume(parseFloat(event.target.value));
     }
 
-    const setAndSaveURL = (url: string) => {
-        setURL(url);
-        localStorage.setItem(mediaURLLocalStorageKey, url);
+    const handleChannelSelection = (streamID: string) => {
+        setSteamID(streamID);
+        localStorage.setItem(streamIDLocalStorageKey, streamID);
     }
     const handleStopPropagating = (event: any) =>
         event.stopPropagation();
@@ -100,8 +114,8 @@ function MediaPlayer() {
             <div {...disableTouchProps}>
                 <div className="select is-small is-dark">
                     <select
-                        defaultValue={url}
-                        onChange={event => setAndSaveURL(event.target.value)}>
+                        defaultValue={streamID}
+                        onChange={event => handleChannelSelection(event.target.value)}>
                         <option
                             value=''>
                             ⇨ Choose channel
@@ -109,7 +123,7 @@ function MediaPlayer() {
                         {streams.map((stream: any, key: number) =>
                             <option
                                 key={key}
-                                value={stream.url}>
+                                value={stream.id}>
                                 {stream.name}
                             </option>)}
                     </select>
