@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/smart-clock/static/css/main.740d7076.chunk.css",
-    "main.js": "/smart-clock/static/js/main.efc3f0ce.chunk.js",
-    "main.js.map": "/smart-clock/static/js/main.efc3f0ce.chunk.js.map",
+    "main.js": "/smart-clock/static/js/main.b1f636fe.chunk.js",
+    "main.js.map": "/smart-clock/static/js/main.b1f636fe.chunk.js.map",
     "runtime-main.js": "/smart-clock/static/js/runtime-main.55ae4cf6.js",
     "runtime-main.js.map": "/smart-clock/static/js/runtime-main.55ae4cf6.js.map",
     "static/css/2.9051f3a2.chunk.css": "/smart-clock/static/css/2.9051f3a2.chunk.css",
-    "static/js/2.53f77515.chunk.js": "/smart-clock/static/js/2.53f77515.chunk.js",
-    "static/js/2.53f77515.chunk.js.map": "/smart-clock/static/js/2.53f77515.chunk.js.map",
+    "static/js/2.641c46c1.chunk.js": "/smart-clock/static/js/2.641c46c1.chunk.js",
+    "static/js/2.641c46c1.chunk.js.map": "/smart-clock/static/js/2.641c46c1.chunk.js.map",
     "static/js/3.5bc81297.chunk.js": "/smart-clock/static/js/3.5bc81297.chunk.js",
     "static/js/3.5bc81297.chunk.js.map": "/smart-clock/static/js/3.5bc81297.chunk.js.map",
     "index.html": "/smart-clock/index.html",
     "static/css/2.9051f3a2.chunk.css.map": "/smart-clock/static/css/2.9051f3a2.chunk.css.map",
     "static/css/main.740d7076.chunk.css.map": "/smart-clock/static/css/main.740d7076.chunk.css.map",
-    "static/js/2.53f77515.chunk.js.LICENSE.txt": "/smart-clock/static/js/2.53f77515.chunk.js.LICENSE.txt",
+    "static/js/2.641c46c1.chunk.js.LICENSE.txt": "/smart-clock/static/js/2.641c46c1.chunk.js.LICENSE.txt",
     "static/media/weather-icons.css": "/smart-clock/static/media/weathericons-regular-webfont.e218aee6.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.55ae4cf6.js",
     "static/css/2.9051f3a2.chunk.css",
-    "static/js/2.53f77515.chunk.js",
+    "static/js/2.641c46c1.chunk.js",
     "static/css/main.740d7076.chunk.css",
-    "static/js/main.efc3f0ce.chunk.js"
+    "static/js/main.b1f636fe.chunk.js"
   ]
 }
