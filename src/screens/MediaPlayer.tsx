@@ -19,7 +19,7 @@ function MediaPlayer() {
     const [playing, setPlaying] = useState(false);
 
     const [url, setURL] = useState(
-        localStorage.getItem(mediaURLLocalStorageKey) || streams[0].url
+        localStorage.getItem(mediaURLLocalStorageKey) || ''
     );
 
     const currentStream = (streams.find(stream => stream.url === url));
@@ -53,6 +53,11 @@ function MediaPlayer() {
 
     return <div className="MediaPlayer" >
         <div className="MediaPlayerScreen">
+            {url === '' &&
+                <div className="MediaPlayerWelcome">
+                    When a channel is playing swipe in the clock area to go to the next screen.
+                </div>
+            }
             {currentStream?.isRadio &&
                 <div className="MediaPlayerScreenName">
                     <div>{currentStream.name}</div>
@@ -101,6 +106,10 @@ function MediaPlayer() {
                     <select
                         defaultValue={url}
                         onChange={event => setAndSaveURL(event.target.value)}>
+                        <option
+                            value=''>
+                            Choose channel
+                        </option>
                         {streams.map((stream: any, key: number) =>
                             <option
                                 key={key}
