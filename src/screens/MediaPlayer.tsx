@@ -55,7 +55,6 @@ function MediaPlayer() {
                     console.log('Unable to get playlist', error);
                 }
             }
-            console.log(streams);
             setStreams(streams);
         })();
     }, []);
@@ -123,7 +122,7 @@ function MediaPlayer() {
                     Unable to play stream.
                 </div>
             }
-            {url && !hasStreamError&&
+            {url && !hasStreamError &&
                 <ReactPlayer
                     className="MediaPlayerReactPlayer"
                     ref={playerRef}
