@@ -32,8 +32,7 @@ function MainScreen() {
     }, []);
 
     function getRandomBackground() {
-        const collection = isUsingAnimatedBackgrounds ? animatedBackgrounds : backgrounds ;
-        console.log(isUsingAnimatedBackgrounds)
+        const collection = isUsingAnimatedBackgrounds ? animatedBackgrounds : backgrounds;
         return collection[Math.floor(Math.random() * collection.length)];
     }
     return <div

@@ -12,21 +12,58 @@ import config from '../config';
 import './MediaPlayer.scss';
 
 const streamIDLocalStorageKey = 'mediaURL';
-const streams = config.mediaPlayerStreams;
 
 function MediaPlayer() {
     const playerRef = useRef(null);
     const [volume, setVolume] = useState(1);
     const [playing, setPlaying] = useState(false);
+    const [hasStreamError, setHasStreamError] = useState(false);
+    const [streams, setStreams] = useState([] as any);
     const [streamID, setSteamID] = useState(
         localStorage.getItem(streamIDLocalStorageKey) || ''
     );
     const [url, setURL] = useState('');
-    const currentStream = (streams.find(stream => stream.id === streamID));
+
+    const currentStream = streams ?
+        (streams.find((stream: any) =>
+            stream.id === streamID)) : null;
+
+    useEffect(() => {
+        (async () => {
+            let streams = config.mediaPlayerStreams;
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            const params = Object.fromEntries(urlSearchParams.entries());
+            if (params.playlist) {
+                try {
+                const response = await fetch(params.playlist);
+                const playlist = await response.text();
+                streams = playlist.split('#EXTINF:').reduce(
+                    (acc, curr, index) => {
+                        const line = curr.split(',');
+                        if (line.length === 2) {
+                            const streamNameAndUrl = line[1].split('\n');
+                            acc.push({
+                                id: index.toString(),
+                                name: streamNameAndUrl[0],
+                                url: streamNameAndUrl[1].replace('http://', 'https://'),
+                                isRadio: false,
+                            });
+                        }
+                        return acc;
+                    }, [] as any);
+                } catch (error) {
+                    console.log('Unable to get playlist', error);
+                }
+            }
+            console.log(streams);
+            setStreams(streams);
+        })();
+    }, []);
 
     useEffect(() => {
         (async () => {
             let url = '';
+            setHasStreamError(false);
             if (currentStream) {
                 if (typeof currentStream.url === 'function') {
                     url = await currentStream.url() || '';
@@ -80,7 +117,13 @@ function MediaPlayer() {
                     When a channel is playing swipe in the clock area to go to the next screen.
                 </div>
             }
-            {url &&
+            {hasStreamError &&
+                <div className="MediaPlayerWelcome">
+                    <h1>😢</h1>
+                    Unable to play stream.
+                </div>
+            }
+            {url && !hasStreamError&&
                 <ReactPlayer
                     className="MediaPlayerReactPlayer"
                     ref={playerRef}
@@ -91,6 +134,7 @@ function MediaPlayer() {
                     controls={false}
                     loop={true}
                     volume={volume}
+                    onError={(error)=> setHasStreamError(true)}
                     onReady={() => setTimeout(() => setPlaying(true), 1000)}
                 />
             }
