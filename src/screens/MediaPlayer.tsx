@@ -133,7 +133,7 @@ function MediaPlayer() {
                     controls={false}
                     loop={true}
                     volume={volume}
-                    onError={(error)=> setHasStreamError(true)}
+                    onError={(error)=> {setHasStreamError(true); setTimeout(() => setPlaying(true), 5000) }}
                     onReady={() => setTimeout(() => setPlaying(true), 1000)}
                 />
             }
