@@ -157,7 +157,7 @@ function MediaPlayer() {
             <div {...disableTouchProps}>
                 <div className="select is-small is-dark">
                     <select
-                        defaultValue={streamID}
+                        value={streamID}
                         onChange={event => handleChannelSelection(event.target.value)}>
                         <option
                             value=''>
