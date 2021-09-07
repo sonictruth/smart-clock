@@ -6,8 +6,6 @@ import {
 import Time from './components/Time';
 import Weather from './components/Weather';
 import ReactPlayer from 'react-player';
-// import { findDOMNode } from 'react-dom';
-// import screenfull from 'screenfull';
 import config from '../config';
 import './MediaPlayer.scss';
 
@@ -50,7 +48,7 @@ function MediaPlayer() {
                             });
                         }
                         return acc;
-                    }, [] as any);
+                    }, [] as StreamInfo[]);
                 } catch (error) {
                     console.log('Unable to get playlist', error);
                 }
@@ -89,18 +87,6 @@ function MediaPlayer() {
         onTouchEnd: handleStopPropagating,
         onMouseUp: handleStopPropagating
     };
-
-    /*
-    const handleClickFullscreen = () => {
-        if (screenfull.isEnabled) {
-            if (playerRef.current) {
-                const el = playerRef.current;
-                const node = findDOMNode(el);
-                screenfull.request(node as Element);
-            }
-        }
-    }
-    */
 
     return <div className="MediaPlayer" >
         <div className="MediaPlayerScreen">

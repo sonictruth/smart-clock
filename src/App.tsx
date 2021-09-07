@@ -30,7 +30,7 @@ function App() {
   const getPosition = (event: any): number =>
     event.clientX || (
       (event.targetTouches && event.targetTouches.length > 0) ?
-      event.targetTouches[0].clientX : 0
+        event.targetTouches[0].clientX : 0
     );
 
   const handleTouchStart = (event: any) => {
@@ -56,7 +56,6 @@ function App() {
       if (nextLocationRouteIndex < 0) {
         nextLocationRouteIndex = config.routes.length - 1;
       }
-
     };
 
     if (touchStart - touchEnd < -50) {
@@ -64,7 +63,6 @@ function App() {
       if (nextLocationRouteIndex > config.routes.length - 1) {
         nextLocationRouteIndex = 0;
       }
-
     }
 
     if (nextLocationRouteIndex !== null) {
@@ -74,7 +72,8 @@ function App() {
 
   }
   return (
-    <div className="App"
+    <div
+      className="App"
       onMouseDown={handleTouchStart}
       onMouseMove={handleTouchMove}
       onMouseUp={handleTouchEnd}
