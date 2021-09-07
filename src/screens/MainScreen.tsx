@@ -1,24 +1,19 @@
 import './MainScreen.scss';
 import Time from './components/Time';
 import Weather from './components/Weather';
-import { useState, useEffect } from 'react';
+import {
+    useState,
+    useEffect,
+} from 'react';
+import config from '../config';
 
-const animatedBackgrounds = [
-    'v1.gif',
-    'v2.gif',
-    'v4.gif',
-    'v5.gif',
-    'v6.gif',
-    'v7.gif',
-    'v13.gif',
-];
-
-const backgrounds = Array.from(Array(40).keys()).map(index => `d${index + 1}.jpeg`);
-
-const backgroundUpdateIntervalSeconds = 600;
-const urlSearchParams = new URLSearchParams(window.location.search);
-const params = Object.fromEntries(urlSearchParams.entries());
-const isUsingAnimatedBackgrounds = (params.animated && params.animated === 'true');
+const backgrounds = Array.from(
+    Array(40)
+        .keys())
+    .map(index => `d${index + 1}.jpeg`
+    );
+const backgroundImageUpdateIntervalSeconds
+    = config.backgroundImageUpdateIntervalSeconds;
 
 function MainScreen() {
     const [backgroundURL, setBackgroundURL] = useState(getRandomBackground());
@@ -26,15 +21,15 @@ function MainScreen() {
     useEffect(() => {
         const timerID = setInterval(() => setBackgroundURL(
             getRandomBackground()),
-            backgroundUpdateIntervalSeconds * 1000
+            backgroundImageUpdateIntervalSeconds * 1000
         );
         return () => clearInterval(timerID);
     }, []);
 
     function getRandomBackground() {
-        const collection = isUsingAnimatedBackgrounds ? animatedBackgrounds : backgrounds;
-        return collection[Math.floor(Math.random() * collection.length)];
+        return backgrounds[Math.floor(Math.random() * backgrounds.length)];
     }
+
     return <div
         className="MainScreen"
         style={{
