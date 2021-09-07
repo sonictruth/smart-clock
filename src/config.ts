@@ -1,4 +1,4 @@
-const config = {
+const config: Config = {
 
     youtubePlaylistURL: 'https://www.youtube.com/embed/videoseries?list=PLywsZdsYYHTZNdHTYDNooq86TCJLPCjoK',
 

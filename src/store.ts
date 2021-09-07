@@ -14,7 +14,6 @@ async function getCoordinates() {
             clearTimeout(timeout);
             resolve(position);
         }, reject);
-
     });
 }
 
@@ -32,7 +31,6 @@ async function getLocation() {
     }
     return location;
 }
-
 
 const useStore = create(
     set => {
