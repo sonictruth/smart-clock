@@ -1,3 +1,6 @@
+iframe {
+  border: 0;
+}
 
 body {
   -webkit-font-smoothing: antialiased;
@@ -16,8 +19,4 @@ html,
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently */
-}
-
-iframe {
-  border: 0;
 }

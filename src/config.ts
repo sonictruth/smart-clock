@@ -1,9 +1,7 @@
 const config: Config = {
 
     backgroundImageUpdateIntervalSeconds: 600,
-
-    youtubePlaylistURL: 'https://www.youtube.com/embed/videoseries?list=PLywsZdsYYHTZNdHTYDNooq86TCJLPCjoK',
-
+    
     mediaPlayerStreams: [
         {
             id: '10',

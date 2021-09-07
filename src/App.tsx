@@ -11,12 +11,6 @@ import MainScreen from './screens/MainScreen';
 
 const config = {
   routes: [
-    /*
-    {
-        path: "/YouToubePlayer",
-        component: YouToubePlayer,
-    },
-    */
     {
       path: "/MediaPlayer",
       component: MediaPlayer,

@@ -11,7 +11,6 @@ type StreamInfo = {
 type Config = {
     backgroundImageUpdateIntervalSeconds: number,
     mediaPlayerStreams: SteamInfo[],
-    youtubePlaylistURL: string,
     weather: {
         apiURL: string,
         apiKey: string,
