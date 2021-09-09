@@ -9,7 +9,7 @@ Kindle 1 2011 (Upgraded to slimp ROM) running Smart Clock using Fully.
 
 **⚠️ Swipe left or right (using mouse or touch) to changee screen.**
 
-ℹ️ Optionaly you can load external playlist by using the playlist parameter:
+ℹ️ Optionally you can load external playlist by using the playlist parameter:
 
 https://sonictruth.github.io/smart-clock/?playlist=https://raw.githubusercontent.com/iptv-org/iptv/master/channels/pl.m3u
 
