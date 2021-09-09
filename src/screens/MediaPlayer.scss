@@ -6,7 +6,15 @@
   .MediaPlayerScreen {
     grid-area: screen;
     position: relative;
-    .MediaPlayerWelcome {
+    &-status {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+    }
+    &-info, &-status {
       text-align: center;
       padding: 20px;
       font-size: 1.4em;
@@ -14,32 +22,18 @@
         font-size: 5em;
       }
     }
-    .MediaPlayerScreenName{
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      font-size: 5em;
-      z-index: 1;
-      > div {
-        text-align: center;
-        margin-top: 100px;
-      }
-    }
   }
   .MediaPlayerBottom {
+    grid-area: botttom;
+    margin: 20px;
+    font-size: 1.5em;
+    margin: auto;
     > div {
       float: left;
       margin: 20px;
       margin-top: auto;
       margin-bottom: auto;
     }
-    margin: 20px;
-    grid-area: botttom;
-    font-size: 1.5em;
-    margin: auto;
-
     select {
       width: 200px;
       background-color: #363636;

@@ -1,7 +1,7 @@
 import {
     useEffect,
-    useRef,
     useState,
+    useRef,
 } from 'react';
 import Time from './components/Time';
 import Weather from './components/Weather';
@@ -9,118 +9,194 @@ import ReactPlayer from 'react-player';
 import config from '../config';
 import './MediaPlayer.scss';
 
-const streamIDLocalStorageKey = 'mediaURL';
+const streamIDLocalStorageKey = 'streamID';
+
+const streamErrorRetryMs = 5000;
+
+enum MediaPlayerState {
+    Loading = 'loading',
+    Error = 'error',
+    Playing = 'playing',
+    Stopped = 'stopped',
+}
 
 function MediaPlayer() {
-    const playerRef = useRef(null);
-    const [volume, setVolume] = useState(1);
-    const [playing, setPlaying] = useState(false);
-    const [hasStreamError, setHasStreamError] = useState(false);
-    const [streams, setStreams] = useState([] as any);
-    const [streamID, setSteamID] = useState(
-        localStorage.getItem(streamIDLocalStorageKey) || ''
-    );
-    const [url, setURL] = useState('');
 
-    const currentStream = streams ?
-        (streams.find((stream: any) =>
-            stream.id === streamID)) : null;
+    const setTimeoutReplayRef = useRef();
+
+    const [streamID, setSteamID] = useState(
+        localStorage.getItem(streamIDLocalStorageKey)
+    );
+
+    const [mediaPlayerState, setMediaPlayerState] =
+        useState<MediaPlayerState>(MediaPlayerState.Stopped);
+
+    const [volume, setVolume] = useState(1);
+
+    const [streams, setStreams] = useState<Stream[]>();
+
+    const [currentStream, setCurrentSteam] = useState<Stream>();
+
+    const [streamURL, setStreamURL] = useState();
+
+    useEffect(() => () =>
+        clearTimeout(setTimeoutReplayRef.current)
+        , []);
 
     useEffect(() => {
         (async () => {
-            let streams = config.mediaPlayerStreams;
-            const urlSearchParams = new URLSearchParams(window.location.search);
-            const params = Object.fromEntries(urlSearchParams.entries());
-            if (params.playlist) {
-                try {
-                const response = await fetch(params.playlist);
-                const playlist = await response.text();
-                streams = playlist.split('#EXTINF:').reduce(
-                    (acc, curr, index) => {
-                        const line = curr.split(',');
-                        if (line.length === 2) {
-                            const streamNameAndUrl = line[1].split('\n');
-                            acc.push({
-                                id: index.toString(),
-                                name: streamNameAndUrl[0],
-                                url: streamNameAndUrl[1].replace('http://', 'https://'),
-                                isRadio: false,
-                            });
-                        }
-                        return acc;
-                    }, [] as StreamInfo[]);
-                } catch (error) {
-                    console.log('Unable to get playlist', error);
+            let streams: Stream[] = config.mediaPlayerStreams;
+            try {
+                const urlSearchParams = new URLSearchParams(window.location.search);
+                const params = Object.fromEntries(urlSearchParams.entries());
+                if (params.playlist) {
+                    streams = await loadPlaylist(params.playlist);
                 }
+            } catch (error) {
+                console.error('Unable to load custom playlist', error);
             }
             setStreams(streams);
         })();
     }, []);
 
+    useEffect(() =>
+        setCurrentSteam(
+            streams?.find(stream => stream.id === streamID)
+        )
+        , [streamID, streams]);
+
     useEffect(() => {
         (async () => {
-            let url = '';
-            setHasStreamError(false);
-            if (currentStream) {
-                if (typeof currentStream.url === 'function') {
-                    url = await currentStream.url() || '';
-                } else {
-                    url = currentStream.url;
+            let url;
+            let hasError = false;
+            setMediaPlayerState(MediaPlayerState.Loading);
+
+            try {
+                if (currentStream) {
+                    if (typeof currentStream.url === 'function') {
+                        url = await currentStream.url();
+                    } else {
+                        url = currentStream.url;
+                    }
                 }
+            } catch (error) {
+                console.error('Unable to get custom URL', error);
+                hasError = true;
             }
-            setURL(url);
-        })();
+
+            if (hasError) {
+                setMediaPlayerState(MediaPlayerState.Error);
+                retryStream(currentStream);
+            } else {
+                setMediaPlayerState(
+                    url ? MediaPlayerState.Loading : MediaPlayerState.Stopped
+                );
+            }
+            setStreamURL(url);
+        })()
     }, [currentStream]);
 
-    const handleVolumeChange = (event: any) => {
-        setVolume(parseFloat(event.target.value));
+    const retryStream = (currentStream: Stream | undefined) => {
+        clearTimeout(setTimeoutReplayRef.current);
+        setTimeoutReplayRef.current = setTimeout(() => {
+            if (currentStream) {
+                setCurrentSteam({ ...currentStream });
+            }
+        }, streamErrorRetryMs) as any;
+    }
+
+    const loadPlaylist = async (url: string): Promise<Stream[]> => {
+        const response = await fetch(url);
+        const playlist = await response.text();
+        const streams = playlist
+            .split('#EXTINF:')
+            .reduce(
+                (acc, curr, index) => {
+                    const line = curr.split(',');
+                    if (line.length === 2) {
+                        const streamNameAndUrl = line[1].split('\n');
+                        acc.push({
+                            id: index.toString(),
+                            name: streamNameAndUrl[0],
+                            url: streamNameAndUrl[1]
+                                .replace('http://', 'https://'),
+                            isRadio: false,
+                        });
+                    }
+                    return acc;
+                }, [] as Stream[]);
+        return streams;
     }
 
     const handleChannelSelection = (streamID: string) => {
+        clearTimeout(setTimeoutReplayRef.current);
         setSteamID(streamID);
         localStorage.setItem(streamIDLocalStorageKey, streamID);
     }
-    const handleStopPropagating = (event: any) =>
-        event.stopPropagation();
+
+    const handleVolumeChange = (event: any) =>
+        setVolume(parseFloat(event.target.value));
+
+    const handleReactPlayerOnPlay = () => {
+        setMediaPlayerState(MediaPlayerState.Playing);
+    }
+
+    const handleReactPlayerError = (error: any, errorInfo: any) => {
+        setMediaPlayerState(MediaPlayerState.Error);
+        console.error('React player error:', error, errorInfo);
+        if (errorInfo?.details === 'manifestLoadError' ||
+            errorInfo?.details === 'manifestLoadTimeOut' ||
+            errorInfo?.details === 'bufferStalledError') {
+            retryStream(currentStream);
+        }
+    }
 
     const disableTouchProps = {
-        onTouchEnd: handleStopPropagating,
-        onMouseUp: handleStopPropagating
+        onTouchEnd: (event: any) =>
+            event.stopPropagation(),
+        onMouseUp: (event: any) =>
+            event.stopPropagation(),
     };
 
     return <div className="MediaPlayer" >
         <div className="MediaPlayerScreen">
-
-            {currentStream?.isRadio &&
-                <div className="MediaPlayerScreenName">
-                    <div>{currentStream.name}</div>
-                </div>
-            }
-            {!url &&
-                <div className="MediaPlayerWelcome">
+            {(mediaPlayerState === MediaPlayerState.Stopped) &&
+                <div className="MediaPlayerScreen-info">
                     <h1>Media Player 📺</h1>
                     When a channel is playing swipe in the clock area to go to the next screen.
                 </div>
             }
-            {hasStreamError &&
-                <div className="MediaPlayerWelcome">
-                    <h1>😢</h1>
-                    Unable to play stream.
+            {(mediaPlayerState === MediaPlayerState.Error) &&
+                <div className="MediaPlayerScreen-status">
+                    <h1>😢 Error</h1>
+                    We are having problems loading {currentStream?.name}.
                 </div>
             }
-            {url && !hasStreamError &&
+            {(mediaPlayerState === MediaPlayerState.Loading) &&
+                <div className="MediaPlayerScreen-status">
+                    <h1>⏳</h1>
+                    Loading {currentStream?.name}...
+                </div>
+            }
+            {(mediaPlayerState === MediaPlayerState.Playing && currentStream?.isRadio) &&
+                <div className="MediaPlayerScreen-info">
+                    <h1>📻</h1>
+                    <h1>{currentStream.name}</h1>
+                </div>
+            }
+            {mediaPlayerState !== MediaPlayerState.Error &&
                 <ReactPlayer
                     className="MediaPlayerReactPlayer"
-                    ref={playerRef}
                     width='100%'
                     height='100%'
-                    url={url}
-                    playing={playing}
+                    url={streamURL}
+                    playing={true}
                     controls={false}
                     loop={true}
                     volume={volume}
-                    onError={(error)=> {setHasStreamError(true); setTimeout(() => setPlaying(true), 5000) }}
-                    onReady={() => setTimeout(() => setPlaying(true), 1000)}
+                    onPlay={()=> handleReactPlayerOnPlay()}
+                    onError={(error: any, errorObject: any) =>
+                        handleReactPlayerError(error, errorObject)}
                 />
             }
         </div>
@@ -143,18 +219,19 @@ function MediaPlayer() {
             <div {...disableTouchProps}>
                 <div className="select is-small is-dark">
                     <select
-                        value={streamID}
+                        value={streamID || ''}
                         onChange={event => handleChannelSelection(event.target.value)}>
                         <option
                             value=''>
                             ⇨ Choose channel
                         </option>
-                        {streams.map((stream: any, key: number) =>
-                            <option
-                                key={key}
-                                value={stream.id}>
-                                {stream.name}
-                            </option>)}
+                        {streams &&
+                            streams.map((stream: any, key: number) =>
+                                <option
+                                    key={key}
+                                    value={stream.id}>
+                                    {stream.name}
+                                </option>)}
                     </select>
                 </div>
 

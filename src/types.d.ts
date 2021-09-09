@@ -1,15 +1,20 @@
 declare module 'react-icons-weather'
 
-type StreamInfo = { 
+type Stream = { 
     id: string, 
     name: string, 
     url: string | Function,
     isRadio: boolean,
 };
 
+type TouchPosition = {
+    start: number,
+    end: number,
+}
+
 type Config = {
     backgroundImageUpdateIntervalSeconds: number,
-    mediaPlayerStreams: StreamInfo[],
+    mediaPlayerStreams: Stream[],
     weather: {
         apiURL: string,
         apiKey: string,

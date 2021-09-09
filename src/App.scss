@@ -1,66 +1,60 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
-
-$purple: #8a4d76;
-$pink: #fa7c91;
-$brown: #757763;
-$beige-light: #d0d1cd;
-$beige-lighter: #eff0eb;
-
-$family-sans-serif: "Comfortaa", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
-
-$body-background-color: black;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
-
-// Import only what you need from Bulma
-@import "../node_modules/bulma/sass/utilities/_all.sass";
-@import "../node_modules/bulma/sass/utilities/mixins.sass";
-@import "../node_modules/bulma/sass/base/_all.sass";
-@import "../node_modules/bulma/sass/grid/_all.sass";
-@import "../node_modules/bulma/sass/elements/button.sass";
-@import "../node_modules/bulma/sass/form/_all.sass";
-
-@import "../node_modules/input-range-scss/inputrange";
-
 .App {
-  font-size: 12pt;
   height: 100%;
-  @include mobile {
-    font-size: 5pt;
-  }
-  @include tablet {
-    font-size: 7pt;
-  }
-  @include desktop {
-    font-size: 12pt;
-  }
-  @include widescreen {
-    font-size: 13pt;
-  }
-}
-
-.AppPortrait {
-  display: none;
-}
-
-@media screen and (orientation: portrait) {
-  .AppPortrait{
-    display: block;
+  position: relative;
+  .AppScreen {
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
-    text-align: center;
-    background-color: black;
-    font-size: 2em;
-    padding: 20px;
+    bottom: 0;
+  }
+
+  .AppPortraitWarning {
+    display: none;
+  }
+
+  @media screen and (orientation: portrait) {
+    .AppPortraitWarning {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      background-color: black;
+      font-size: 2em;
+      padding: 20px;
+    }
+  }
+}
+
+@mixin route-transition($speed, $from, $to) {
+  &-enter {
+    transform: translateX($from);
+    &-active {
+      transform: translateX(0%);
+      transition: transform $speed ease-out;
+    }
+  }
+
+  &-exit {
+    transform: translateX(0%);
+    &-active {
+      transform: translateX($to);
+      transition: transform $speed ease-out;
+    }
+  }
+}
+
+.AppSwipe-left {
+  .AppScreen {
+    @include route-transition(300ms, 100%, -100%);
+  }
+}
+
+.AppSwipe-right {
+  .AppScreen {
+    @include route-transition(300ms, -100%, 100%);
   }
 }

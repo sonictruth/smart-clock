@@ -7,11 +7,10 @@ import {
 } from 'react';
 import config from '../config';
 
-const backgrounds = Array.from(
-    Array(40)
-        .keys())
+const backgrounds = Array.from(Array(40).keys())
     .map(index => `d${index + 1}.jpeg`
     );
+
 const backgroundImageUpdateIntervalSeconds
     = config.backgroundImageUpdateIntervalSeconds;
 
