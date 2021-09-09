@@ -180,13 +180,13 @@ function MediaPlayer() {
             }
             {(mediaPlayerState === MediaPlayerState.Playing && currentStream?.isRadio) &&
                 <div className="MediaPlayerScreen-status">
-                    <h1>📻</h1>
-                    <h1>{currentStream.name}</h1>
+                    <h2>📻{currentStream.name}</h2>
+                    <h1><Time /></h1>
                 </div>
             }
             {
-            mediaPlayerState !== MediaPlayerState.Stopped &&
-            mediaPlayerState !== MediaPlayerState.Error &&
+                mediaPlayerState !== MediaPlayerState.Stopped &&
+                mediaPlayerState !== MediaPlayerState.Error &&
                 <ReactPlayer
                     className="MediaPlayerReactPlayer"
                     width='100%'
@@ -196,7 +196,7 @@ function MediaPlayer() {
                     controls={false}
                     loop={true}
                     volume={volume}
-                    onPlay={()=> handleReactPlayerOnPlay()}
+                    onPlay={() => handleReactPlayerOnPlay()}
                     onError={(error: any, errorObject: any) =>
                         handleReactPlayerError(error, errorObject)}
                 />
