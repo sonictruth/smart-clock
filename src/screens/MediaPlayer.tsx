@@ -179,12 +179,14 @@ function MediaPlayer() {
                 </div>
             }
             {(mediaPlayerState === MediaPlayerState.Playing && currentStream?.isRadio) &&
-                <div className="MediaPlayerScreen-info">
+                <div className="MediaPlayerScreen-status">
                     <h1>📻</h1>
                     <h1>{currentStream.name}</h1>
                 </div>
             }
-            {mediaPlayerState !== MediaPlayerState.Error &&
+            {
+            mediaPlayerState !== MediaPlayerState.Stopped &&
+            mediaPlayerState !== MediaPlayerState.Error &&
                 <ReactPlayer
                     className="MediaPlayerReactPlayer"
                     width='100%'
