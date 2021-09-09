@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/smart-clock/static/css/main.4d7cd160.chunk.css",
-    "main.js": "/smart-clock/static/js/main.b1a4ed95.chunk.js",
-    "main.js.map": "/smart-clock/static/js/main.b1a4ed95.chunk.js.map",
-    "runtime-main.js": "/smart-clock/static/js/runtime-main.55ae4cf6.js",
-    "runtime-main.js.map": "/smart-clock/static/js/runtime-main.55ae4cf6.js.map",
+    "main.css": "/smart-clock/static/css/main.8298ce70.chunk.css",
+    "main.js": "/smart-clock/static/js/main.8898a14e.chunk.js",
+    "main.js.map": "/smart-clock/static/js/main.8898a14e.chunk.js.map",
+    "runtime-main.js": "/smart-clock/static/js/runtime-main.54d79dce.js",
+    "runtime-main.js.map": "/smart-clock/static/js/runtime-main.54d79dce.js.map",
     "static/css/2.9051f3a2.chunk.css": "/smart-clock/static/css/2.9051f3a2.chunk.css",
-    "static/js/2.d2da8f79.chunk.js": "/smart-clock/static/js/2.d2da8f79.chunk.js",
-    "static/js/2.d2da8f79.chunk.js.map": "/smart-clock/static/js/2.d2da8f79.chunk.js.map",
-    "static/js/3.5bc81297.chunk.js": "/smart-clock/static/js/3.5bc81297.chunk.js",
-    "static/js/3.5bc81297.chunk.js.map": "/smart-clock/static/js/3.5bc81297.chunk.js.map",
+    "static/js/2.f5054f92.chunk.js": "/smart-clock/static/js/2.f5054f92.chunk.js",
+    "static/js/2.f5054f92.chunk.js.map": "/smart-clock/static/js/2.f5054f92.chunk.js.map",
+    "static/js/3.20828eb9.chunk.js": "/smart-clock/static/js/3.20828eb9.chunk.js",
+    "static/js/3.20828eb9.chunk.js.map": "/smart-clock/static/js/3.20828eb9.chunk.js.map",
     "index.html": "/smart-clock/index.html",
     "static/css/2.9051f3a2.chunk.css.map": "/smart-clock/static/css/2.9051f3a2.chunk.css.map",
-    "static/css/main.4d7cd160.chunk.css.map": "/smart-clock/static/css/main.4d7cd160.chunk.css.map",
-    "static/js/2.d2da8f79.chunk.js.LICENSE.txt": "/smart-clock/static/js/2.d2da8f79.chunk.js.LICENSE.txt",
+    "static/css/main.8298ce70.chunk.css.map": "/smart-clock/static/css/main.8298ce70.chunk.css.map",
+    "static/js/2.f5054f92.chunk.js.LICENSE.txt": "/smart-clock/static/js/2.f5054f92.chunk.js.LICENSE.txt",
     "static/media/weather-icons.css": "/smart-clock/static/media/weathericons-regular-webfont.e218aee6.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.55ae4cf6.js",
+    "static/js/runtime-main.54d79dce.js",
     "static/css/2.9051f3a2.chunk.css",
-    "static/js/2.d2da8f79.chunk.js",
-    "static/css/main.4d7cd160.chunk.css",
-    "static/js/main.b1a4ed95.chunk.js"
+    "static/js/2.f5054f92.chunk.js",
+    "static/css/main.8298ce70.chunk.css",
+    "static/js/main.8898a14e.chunk.js"
   ]
 }
