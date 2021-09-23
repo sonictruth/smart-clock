@@ -1,7 +1,7 @@
 const config: Config = {
 
     backgroundImageUpdateIntervalSeconds: 600,
-    
+
     mediaPlayerStreams: [
         {
             id: '10',
@@ -43,12 +43,20 @@ const config: Config = {
             url: 'https://dai.google.com/linear/hls/event/OQfdjUhHSDSlb1fJVzehsQ/master.m3u8',
             isRadio: false,
         },
-          {
+        {
             id: '41',
-            name: 'Radio Guerilla',
-            url: ' https://guerrillaradio.b-cdn.net/guerrilla.m3u',
-            isRadio: false,
-        },          
+            name: 'Kiss FM',
+            url: 'https://live.kissfm.ro/kissfm.aacp',
+            isRadio: true,
+        },
+        {
+            id: '43',
+            name: 'Digi FM',
+            url: 'https://edge76.rcs-rds.ro/digifm/digifm.mp3',
+            isRadio: true,
+        },
+
+        
         {
             id: '50',
             name: 'TVRi',
