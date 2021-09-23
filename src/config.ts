@@ -62,18 +62,6 @@ const config: Config = {
             isRadio: false,
         },
         {
-            id: '80',
-            name: 'Antena 3',
-            url: 'https://ivm.antenaplay.ro/live/a3/playlist.m3u8',
-            isRadio: false,
-        },
-        {
-            id: '90',
-            name: 'Antena 1',
-            url: 'https://ivm.antenaplay.ro/live/a1/playlist.m3u8',
-            isRadio: false,
-        },
-        {
             id: '100',
             name: 'Radio 3',
             url: 'https://rtvelivestreamv3.akamaized.net/rne_r3_main.m3u8',
