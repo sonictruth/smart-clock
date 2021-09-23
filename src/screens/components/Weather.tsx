@@ -84,6 +84,8 @@ function Weather(props: any) {
                         </div>
 
                         <div className="WeatherAlerts">
+                           {weather.timezone}
+
                             {weather.alerts && weather.alerts.map(
                                 (alert: any, key: number) =>
                                     key === 0 && <div key={key}>
