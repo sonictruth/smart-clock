@@ -43,6 +43,12 @@ const config: Config = {
             url: 'https://dai.google.com/linear/hls/event/OQfdjUhHSDSlb1fJVzehsQ/master.m3u8',
             isRadio: false,
         },
+          {
+            id: '41',
+            name: 'Radio Guerilla',
+            url: ' https://guerrillaradio.b-cdn.net/guerrilla.m3u',
+            isRadio: false,
+        },          
         {
             id: '50',
             name: 'TVRi',
