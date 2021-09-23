@@ -1,7 +1,7 @@
 # Smart Clock
 _upcycle_ - _digital signage_ - _smart display_
 
-Smart Clock is a light web application written in React that displays time, weather, videos (maybe other things in the future) on a tablet-like device or anything with a browser. 
+Smart Clock is a light web application that displays time, weather, videos (maybe other things in the future) on a tablet-like device or anything with a browser. 
 
 Kindle 1 2011 (Upgraded to slimp ROM) running Smart Clock using Fully.
 <img src="screen.png">
