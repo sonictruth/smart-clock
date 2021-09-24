@@ -58,6 +58,18 @@ const config: Config = {
             isRadio: false,
         },
         {
+            id: '155',
+            name: 'Realitatea',
+            url: 'https://livestream.realitatea.net/livestream/liverealitatea.stream/playlist.m3u8',
+            isRadio: false,
+        },
+        {
+            id: '156',
+            name: 'KanalD',
+            url: 'https://stream1.kanald.ro/iphone/live.m3u8',
+            isRadio: false,
+        },
+        {
             id: '41',
             name: 'Kiss FM',
             url: 'https://live.kissfm.ro/kissfm.aacp',
