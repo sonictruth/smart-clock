@@ -50,7 +50,13 @@ const config: Config = {
                 return htmlSplit[1].split(`'`)[0];
             },
             isRadio: false,
-        },       
+        },
+        {
+            id: '153',
+            name: 'B1',
+            url: 'https://stream.adunity.com/b1/b1.m3u8',
+            isRadio: false,
+        },
         {
             id: '41',
             name: 'Kiss FM',
@@ -62,7 +68,7 @@ const config: Config = {
             name: 'Digi FM',
             url: 'https://edge76.rcs-rds.ro/digifm/digifm.mp3',
             isRadio: true,
-        },   
+        },
         {
             id: '50',
             name: 'TVRi',
