@@ -85,9 +85,12 @@ function App() {
       setSwipeDirection('right');
     } else {
       if(!isFullscreen || document.fullscreenElement === null) {
-        console.log('click');
+        try {
         document.body.requestFullscreen();
         isFullscreen = true;
+        } catch (error) {
+          console.error(error);
+        }
       }
     }
 
