@@ -149,7 +149,7 @@ function MediaPlayer() {
 
     const handleReactPlayerError = (error: any, errorInfo: any) => {
         setMediaPlayerState(MediaPlayerState.Error);
-        const errorMessage = errorInfo.type ? `${errorInfo.type} ${errorInfo.details}`: error;
+        const errorMessage = errorInfo?.type ? `${errorInfo.type} ${errorInfo.details}`: 'Unknown error';
         setLastErrorDetails(errorMessage); 
         console.error('React player error:', error, errorInfo);
         if (errorInfo?.details === 'manifestLoadError' ||

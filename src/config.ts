@@ -24,7 +24,7 @@ const config: Config = {
         // Stream pre-processing for handling tokens, scraping, selecting specific streams 
         {
             id: '150',
-            name: 'Digi 24 Low',
+            name: 'Digi 24',
             url: async () => {
                 const response =
                     await fetch('https://dai.google.com/linear/hls/event/OQfdjUhHSDSlb1fJVzehsQ/master.m3u8');
@@ -37,6 +37,20 @@ const config: Config = {
             },
             isRadio: false,
         },
+        {
+            id: '151',
+            name: 'Antena 3',
+            url: async () => {
+                const response =
+                    await fetch('https://www.antena3.ro/live/');
+                const html =
+                    await response.text();
+                const htmlSplit = html.split(`liveEmbedHTML5('`);
+
+                return htmlSplit[1].split(`'`)[0];
+            },
+            isRadio: false,
+        },       
         {
             id: '41',
             name: 'Kiss FM',
