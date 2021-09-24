@@ -38,12 +38,6 @@ const config: Config = {
             isRadio: false,
         },
         {
-            id: '40',
-            name: 'Digi24',
-            url: 'https://dai.google.com/linear/hls/event/OQfdjUhHSDSlb1fJVzehsQ/master.m3u8',
-            isRadio: false,
-        },
-        {
             id: '41',
             name: 'Kiss FM',
             url: 'https://live.kissfm.ro/kissfm.aacp',
@@ -54,9 +48,7 @@ const config: Config = {
             name: 'Digi FM',
             url: 'https://edge76.rcs-rds.ro/digifm/digifm.mp3',
             isRadio: true,
-        },
-
-        
+        },   
         {
             id: '50',
             name: 'TVRi',

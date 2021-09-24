@@ -11,7 +11,7 @@ import './MediaPlayer.scss';
 
 const streamIDLocalStorageKey = 'streamID';
 
-const streamErrorRetryMs = 5000;
+const streamErrorRetryMs = 10000;
 
 enum MediaPlayerState {
     Loading = 'loading',
@@ -38,6 +38,8 @@ function MediaPlayer() {
     const [currentStream, setCurrentSteam] = useState<Stream>();
 
     const [streamURL, setStreamURL] = useState();
+
+    const [lastErrorDetails, setLastErrorDetails] = useState('');
 
     useEffect(() => () =>
         clearTimeout(setTimeoutReplayRef.current)
@@ -80,11 +82,14 @@ function MediaPlayer() {
                     }
                 }
             } catch (error) {
-                console.error('Unable to get custom URL', error);
+                const errorText = 'Unable to get custom URL';
+                setLastErrorDetails(errorText);
+                console.error(errorText, error);
                 hasError = true;
             }
 
             if (hasError) {
+                setLastErrorDetails('Unable to load custom url');
                 setMediaPlayerState(MediaPlayerState.Error);
                 retryStream(currentStream);
             } else {
@@ -129,6 +134,7 @@ function MediaPlayer() {
     }
 
     const handleChannelSelection = (streamID: string) => {
+        setLastErrorDetails('');
         clearTimeout(setTimeoutReplayRef.current);
         setSteamID(streamID);
         localStorage.setItem(streamIDLocalStorageKey, streamID);
@@ -143,6 +149,8 @@ function MediaPlayer() {
 
     const handleReactPlayerError = (error: any, errorInfo: any) => {
         setMediaPlayerState(MediaPlayerState.Error);
+        const errorMessage = errorInfo.type ? `${errorInfo.type} ${errorInfo.details}`: error;
+        setLastErrorDetails(errorMessage); 
         console.error('React player error:', error, errorInfo);
         if (errorInfo?.details === 'manifestLoadError' ||
             errorInfo?.details === 'manifestLoadTimeOut' ||
@@ -163,13 +171,13 @@ function MediaPlayer() {
             {(mediaPlayerState === MediaPlayerState.Stopped) &&
                 <div className="MediaPlayerScreen-info">
                     <h1>Media Player 📺</h1>
-                    When a channel is playing swipe in the clock area to go to the next screen.
                 </div>
             }
             {(mediaPlayerState === MediaPlayerState.Error) &&
                 <div className="MediaPlayerScreen-status">
                     <h1>😢 Error</h1>
-                    We are having problems loading {currentStream?.name}.
+                    <div>We are having problems loading {currentStream?.name}.</div>
+                    <small>{lastErrorDetails}</small>
                 </div>
             }
             {(mediaPlayerState === MediaPlayerState.Loading) &&
@@ -187,6 +195,7 @@ function MediaPlayer() {
             {
                 mediaPlayerState !== MediaPlayerState.Stopped &&
                 mediaPlayerState !== MediaPlayerState.Error &&
+
                 <ReactPlayer
                     className="MediaPlayerReactPlayer"
                     width='100%'

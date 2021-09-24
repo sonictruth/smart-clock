@@ -3,7 +3,9 @@
   display: grid;
   grid-template-rows: 90% 10%;
   grid-template-areas: "screen" "botttom";
+
   .MediaPlayerScreen {
+    pointer-events: none;
     grid-area: screen;
     position: relative;
     &-status {

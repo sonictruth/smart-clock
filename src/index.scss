@@ -27,6 +27,10 @@ $input-shadow: none;
 @import "../node_modules/bulma/sass/form/_all.sass";
 @import "../node_modules/input-range-scss/inputrange";
 
+html {
+  overflow: hidden;
+}
+
 body,
 html,
 #root {

@@ -31,9 +31,9 @@ const config = {
   ],
 }
 
-function App() {
+let isFullscreen = false;
 
-  // const screenNodeRef = useRef(null);
+function App() {
 
   const [swipeDirection, setSwipeDirection]
     = useState<'left' | 'right'>('left');
@@ -77,14 +77,18 @@ function App() {
         nextLocationRouteIndex = config.routes.length - 1;
       }
       setSwipeDirection('left');
-    };
-
-    if (touchPositions.start - touchPositions.end < -50) {
+    } else if (touchPositions.start - touchPositions.end < -50) {
       nextLocationRouteIndex = currentLocationRouteIndex + 1;
       if (nextLocationRouteIndex > config.routes.length - 1) {
         nextLocationRouteIndex = 0;
       }
       setSwipeDirection('right');
+    } else {
+      if(!isFullscreen || document.fullscreenElement === null) {
+        console.log('click');
+        document.body.requestFullscreen();
+        isFullscreen = true;
+      }
     }
 
     if (nextLocationRouteIndex !== null) {
