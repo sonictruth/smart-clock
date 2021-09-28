@@ -161,9 +161,9 @@ class GamePadManager(
         return sequenceOf(
             device.name !in BLACKLISTED_DEVICES,
             device.sources and InputDevice.SOURCE_GAMEPAD == InputDevice.SOURCE_GAMEPAD,
-            device.hasKeys(*MINIMAL_SUPPORTED_KEYS).all { it },
+       //     device.hasKeys(*MINIMAL_SUPPORTED_KEYS).all { it },
             device.isVirtual.not(),
-            device.controllerNumber > 0
+        //    device.controllerNumber > 0
         ).all { it }
     }
 
@@ -171,7 +171,7 @@ class GamePadManager(
         private const val GAME_PAD_BINDING_PREFERENCE_BASE_KEY = "pref_key_gamepad_binding"
         private const val GAME_PAD_ENABLED_PREFERENCE_BASE_KEY = "pref_key_gamepad_enabled"
 
-        private fun getSharedPreferencesId(inputDevice: InputDevice) = inputDevice.descriptor
+        private fun getSharedPreferencesId(inputDevice: InputDevice) = inputDevice.id
 
         // This is a last resort, but sadly there are some devices which present keys and the
         // SOURCE_GAMEPAD, so we basically black list them.

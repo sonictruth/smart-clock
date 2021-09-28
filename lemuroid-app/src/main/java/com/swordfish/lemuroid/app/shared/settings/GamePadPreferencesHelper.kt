@@ -20,7 +20,7 @@ class GamePadPreferencesHelper(private val gamePadManager: GamePadManager) {
         preferenceScreen: PreferenceScreen,
         gamePads: List<InputDevice>
     ) {
-        val distinctGamePads = gamePads.distinctBy { it.descriptor }
+        val distinctGamePads = gamePads.distinctBy { it.id }
 
         addEnabledCategory(context, preferenceScreen, distinctGamePads)
 
@@ -80,7 +80,7 @@ class GamePadPreferencesHelper(private val gamePadManager: GamePadManager) {
         preferenceScreen.addPreference(category)
 
         GamePadManager.INPUT_KEYS
-            .filter { inputDevice.hasKeys(it)[0] }
+            //  .filter { inputDevice.hasKeys(it)[0] }
             .map { buildKeyBindingPreference(context, inputDevice, it) }
             .forEach {
                 category.addPreference(it)
