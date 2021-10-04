@@ -37,7 +37,7 @@ function MediaPlayer() {
 
     const [currentStream, setCurrentSteam] = useState<Stream>();
 
-    const [streamURL, setStreamURL] = useState();
+    const [streamURL, setStreamURL] = useState('');
 
     const [lastErrorDetails, setLastErrorDetails] = useState('');
 
@@ -103,6 +103,7 @@ function MediaPlayer() {
 
     const retryStream = (currentStream: Stream | undefined) => {
         clearTimeout(setTimeoutReplayRef.current);
+        setStreamURL('');
         setTimeoutReplayRef.current = setTimeout(() => {
             if (currentStream) {
                 setCurrentSteam({ ...currentStream });
@@ -126,6 +127,7 @@ function MediaPlayer() {
                             url: streamNameAndUrl[1]
                                 .replace('http://', 'https://'),
                             isRadio: false,
+                            category: 'IPTV'
                         });
                     }
                     return acc;
@@ -148,13 +150,12 @@ function MediaPlayer() {
     }
 
     const handleReactPlayerError = (error: any, errorInfo: any) => {
-        setMediaPlayerState(MediaPlayerState.Error);
-        const errorMessage = errorInfo?.type ? `${errorInfo.type} ${errorInfo.details}`: 'Unknown error';
-        setLastErrorDetails(errorMessage); 
-        console.error('React player error:', error, errorInfo);
-        if (errorInfo?.details === 'manifestLoadError' ||
-            errorInfo?.details === 'manifestLoadTimeOut' ||
-            errorInfo?.details === 'bufferStalledError') {
+        console.warn('React player error:', error, errorInfo);
+        if (errorInfo?.fatal === true) {
+            setMediaPlayerState(MediaPlayerState.Error);
+            const errorMessage = errorInfo?.type ? `${errorInfo.type} ${errorInfo.details}` : 'Unknown error';
+            setLastErrorDetails(errorMessage);
+            console.warn('Retry');
             retryStream(currentStream);
         }
     }
@@ -193,9 +194,6 @@ function MediaPlayer() {
                 </div>
             }
             {
-                mediaPlayerState !== MediaPlayerState.Stopped &&
-                mediaPlayerState !== MediaPlayerState.Error &&
-
                 <ReactPlayer
                     className="MediaPlayerReactPlayer"
                     width='100%'
@@ -237,12 +235,28 @@ function MediaPlayer() {
                             ⇨ Choose channel
                         </option>
                         {streams &&
-                            streams.map((stream: any, key: number) =>
-                                <option
-                                    key={key}
-                                    value={stream.id}>
-                                    {stream.name}
-                                </option>)}
+                            <>
+                                {
+                                    Object.keys(streams
+                                        .reduce((acc, stream) => {
+                                            acc[stream.category] = stream.category;
+                                            return acc;
+                                        }, {} as any))
+                                        .map((categoryName, categoryKey) =>
+                                            <optgroup key={categoryKey} label={categoryName}>
+                                                {streams
+                                                    .filter(stream => stream.category === categoryName)
+                                                    .map((stream: any, key: number) =>
+                                                        <option
+                                                            key={key}
+                                                            value={stream.id}>
+                                                            {stream.name}
+                                                        </option>)}
+                                            </optgroup>
+                                        )
+                                }
+                            </>
+                        }
                     </select>
                 </div>
 

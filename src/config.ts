@@ -1,3 +1,9 @@
+enum categories {
+    Radio = 'Radio',
+    TVInt = 'TV International',
+    TVRO = 'TV Romania',
+}
+
 const config: Config = {
 
     backgroundImageUpdateIntervalSeconds: 600,
@@ -8,18 +14,21 @@ const config: Config = {
             name: 'EuroNews',
             url: 'https://www.youtube.com/watch?v=sPgqEHsONK8',
             isRadio: false,
+            category: categories.TVInt,
         },
         {
             id: '20',
             name: 'Al Jazeera',
             url: 'https://www.youtube.com/watch?v=-upyPouRrB8',
             isRadio: false,
+            category: categories.TVInt,
         },
         {
             id: '30',
             name: 'Sky News',
             url: 'https://www.youtube.com/watch?v=9Auq9mYxFEE',
             isRadio: false,
+            category: categories.TVInt,
         },
         // Stream pre-processing for handling tokens, scraping, selecting specific streams 
         {
@@ -36,6 +45,7 @@ const config: Config = {
                 return url;
             },
             isRadio: false,
+            category: categories.TVRO,
         },
         {
             id: '151',
@@ -50,86 +60,94 @@ const config: Config = {
                 return htmlSplit[1].split(`'`)[0];
             },
             isRadio: false,
-        },
-        {
-            id: '153',
-            name: 'B1',
-            url: 'https://stream.adunity.com/b1/b1.m3u8',
-            isRadio: false,
+            category: categories.TVRO,
         },
         {
             id: '155',
             name: 'Realitatea',
             url: 'https://livestream.realitatea.net/livestream/liverealitatea.stream/playlist.m3u8',
             isRadio: false,
+            category: categories.TVRO,
         },
         {
             id: '156',
             name: 'KanalD',
             url: 'https://stream1.kanald.ro/iphone/live.m3u8',
             isRadio: false,
+            category: categories.TVRO,
         },
         {
             id: '41',
             name: 'Kiss FM',
             url: 'https://live.kissfm.ro/kissfm.aacp',
             isRadio: true,
+            category: categories.Radio,
         },
         {
             id: '43',
             name: 'Digi FM',
             url: 'https://edge76.rcs-rds.ro/digifm/digifm.mp3',
             isRadio: true,
-        },
-        {
-            id: '50',
-            name: 'TVRi',
-            url: 'https://mn-nl.mncdn.com/tvri_test/smil:tvri_test.smil/playlist.m3u8',
-            isRadio: false,
+            category: categories.Radio,
         },
         {
             id: '60',
             name: '3/24',
             url: 'https://directes-tv-int.ccma.cat/int/ngrp:324_web/chunklist_b1728000.m3u8',
             isRadio: false,
+            category: categories.TVInt,
         },
         {
             id: '70',
             name: 'PrimaTV',
             url: 'https://stream1.1616.ro:1945/prima/livestream/playlist.m3u8?wowzatokenhash=hOdIznDoakApEuQ8FaFI3yrJuBMZHqCB7B3cWTmRWsc=',
             isRadio: false,
+            category: categories.TVRO,
         },
         {
             id: '100',
             name: 'Radio 3',
             url: 'https://rtvelivestreamv3.akamaized.net/rne_r3_main.m3u8',
             isRadio: true,
+            category: categories.Radio,
         },
         {
             id: '110',
             name: 'iCat',
             url: 'https://directes-radio-int.ccma.cat/int/mp4:icatfm/playlist.m3u8',
             isRadio: true,
+            category: categories.Radio,
         },
         {
             id: '120',
             name: 'RadioParadise',
             url: 'http://stream.radioparadise.com/aac-128',
             isRadio: true,
+            category: categories.Radio,
         },
         {
             id: '130',
             name: 'LoFi',
             url: 'https://www.youtube.com/watch?v=5qap5aO4i9A',
             isRadio: false,
+            category: categories.Radio,
         },
-        // Weekly updated yourube playlist
         {
-            id: '140',
-            name: 'UK Weekly Playlist',
-            url: 'https://youtube.com/playlist?list=PLx0sYbCqOb8Q_CLZC2BdBSKEEB59BOPUM',
+            id: '200',
+            name: 'VH1',
+            url: ' https://content.uplynk.com/channel/36953f5b6546464590d2fcd954bc89cf.m3u8',
             isRadio: false,
+            category: categories.TVInt,
         },
+
+       
+        // Weekly updated Youtube playlist example 
+        // {
+        //    id: '140',
+        //    name: 'UK Weekly Playlist',
+        //    url: 'https://youtube.com/playlist?list=PLx0sYbCqOb8Q_CLZC2BdBSKEEB59BOPUM',
+        //    isRadio: false,
+        //},
     ],
 
     weather: {

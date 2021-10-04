@@ -20,6 +20,7 @@ type Stream = {
     name: string,
     url: string | Function,
     isRadio: boolean,
+    category: string,
 };
 
 type TouchPosition = {
