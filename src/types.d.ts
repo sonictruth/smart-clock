@@ -1,8 +1,23 @@
 declare module 'react-icons-weather'
 
-type Stream = { 
-    id: string, 
-    name: string, 
+type OpenWeatherData = {
+    alerts: any[],
+    current: any,
+    daily: any[],
+    lat: number,
+    lon: number,
+    timezone: string,
+    timezone_offset: number,
+}
+
+type ClockState = {
+    date: Date,
+    weather: OpenWeatherData | null,
+}
+
+type Stream = {
+    id: string,
+    name: string,
     url: string | Function,
     isRadio: boolean,
 };

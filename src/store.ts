@@ -32,7 +32,7 @@ async function getLocation() {
     return location;
 }
 
-const useStore = create(
+const useStore = create<ClockState>(
     set => {
         async function setWeather() {
 
