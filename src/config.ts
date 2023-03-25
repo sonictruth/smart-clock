@@ -12,14 +12,14 @@ const config: Config = {
         {
             id: '10',
             name: 'EuroNews',
-            url: 'https://www.youtube.com/watch?v=sPgqEHsONK8',
+            url: 'https://www.youtube.com/watch?v=8abhZa0DSjY',
             isRadio: false,
-            category: categories.TVInt,
+            category: categories.TVRO,
         },
         {
             id: '20',
             name: 'Al Jazeera',
-            url: 'https://www.youtube.com/watch?v=-upyPouRrB8',
+            url: 'https://www.youtube.com/watch?v=gCNeDWCI0vo',
             isRadio: false,
             category: categories.TVInt,
         },
@@ -31,6 +31,7 @@ const config: Config = {
             category: categories.TVInt,
         },
         // Stream pre-processing for handling tokens, scraping, selecting specific streams 
+        /*
         {
             id: '150',
             name: 'Digi 24',
@@ -62,20 +63,7 @@ const config: Config = {
             isRadio: false,
             category: categories.TVRO,
         },
-        {
-            id: '155',
-            name: 'Realitatea',
-            url: 'https://livestream.realitatea.net/livestream/liverealitatea.stream/playlist.m3u8',
-            isRadio: false,
-            category: categories.TVRO,
-        },
-        {
-            id: '156',
-            name: 'KanalD',
-            url: 'https://stream1.kanald.ro/iphone/live.m3u8',
-            isRadio: false,
-            category: categories.TVRO,
-        },
+        */
         {
             id: '41',
             name: 'Kiss FM',
@@ -91,9 +79,9 @@ const config: Config = {
             category: categories.Radio,
         },
         {
-            id: '60',
-            name: '3/24',
-            url: 'https://directes-tv-int.ccma.cat/int/ngrp:324_web/chunklist_b1728000.m3u8',
+            id: '70',
+            name: '324',
+            url: 'https://directes-tv-int.ccma.cat/live-origin/canal324-hls/master.m3u8',
             isRadio: false,
             category: categories.TVInt,
         },
@@ -105,31 +93,10 @@ const config: Config = {
             category: categories.TVRO,
         },
         {
-            id: '100',
-            name: 'Radio 3',
-            url: 'https://rtvelivestreamv3.akamaized.net/rne_r3_main.m3u8',
-            isRadio: true,
-            category: categories.Radio,
-        },
-        {
-            id: '110',
-            name: 'iCat',
-            url: 'https://directes-radio-int.ccma.cat/int/mp4:icatfm/playlist.m3u8',
-            isRadio: true,
-            category: categories.Radio,
-        },
-        {
             id: '120',
             name: 'RadioParadise',
             url: 'http://stream.radioparadise.com/aac-128',
             isRadio: true,
-            category: categories.Radio,
-        },
-        {
-            id: '130',
-            name: 'LoFi',
-            url: 'https://www.youtube.com/watch?v=5qap5aO4i9A',
-            isRadio: false,
             category: categories.Radio,
         },
         {
