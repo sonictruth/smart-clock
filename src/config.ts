@@ -79,7 +79,7 @@ const config: Config = {
             category: categories.Radio,
         },
         {
-            id: '70',
+            id: '75',
             name: '324',
             url: 'https://directes-tv-int.ccma.cat/live-origin/canal324-hls/master.m3u8',
             isRadio: false,
