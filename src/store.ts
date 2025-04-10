@@ -34,6 +34,7 @@ async function getLocation() {
 
 const useStore = create<ClockState>(
     set => {
+        /*
         async function setWeather() {
 
             const location = await getLocation();
@@ -48,14 +49,22 @@ const useStore = create<ClockState>(
             }).toString()
 
             const callURL = `${apiURL}?${params}`;
-            const response = await fetch(callURL);
 
-            set({ weather: await response.json() });
+            let weather = null;
+            try {
+                const response = await fetch(callURL);
+                weather = await response.json();
+            } catch (error) {
+                console.warn('Unable to fetch weather data', error);
+            }
+
+            set({ weather });
         };
+        */
 
         setInterval(() => set({ date: new Date() }), 1000);
-        setInterval(() => setWeather(), weatherUpdateIntervalMs);
-        setWeather();
+        // setInterval(() => setWeather(), weatherUpdateIntervalMs);
+        // setWeather();
         return ({ date: new Date(), weather: null })
     })
 

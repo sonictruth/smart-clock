@@ -6,7 +6,6 @@
   "dependencies": {
     "bulma": "^0.9.3",
     "input-range-scss": "^1.5.2",
-    "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons-weather": "^1.0.5",
@@ -14,13 +13,14 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
+    "sass": "^1.86.3",
     "screenfull": "^5.1.0",
     "typescript": "^4.3.5",
     "web-vitals": "^1.1.2",
     "zustand": "^3.5.10"
   },
   "scripts": {
-    "start": "HTTPS=true react-scripts start",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

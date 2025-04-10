@@ -9,27 +9,6 @@ const config: Config = {
     backgroundImageUpdateIntervalSeconds: 600,
 
     mediaPlayerStreams: [
-        {
-            id: '10',
-            name: 'EuroNews',
-            url: 'https://www.youtube.com/watch?v=8abhZa0DSjY',
-            isRadio: false,
-            category: categories.TVRO,
-        },
-        {
-            id: '20',
-            name: 'Al Jazeera',
-            url: 'https://www.youtube.com/watch?v=gCNeDWCI0vo',
-            isRadio: false,
-            category: categories.TVInt,
-        },
-        {
-            id: '30',
-            name: 'Sky News',
-            url: 'https://www.youtube.com/watch?v=9Auq9mYxFEE',
-            isRadio: false,
-            category: categories.TVInt,
-        },
         // Stream pre-processing for handling tokens, scraping, selecting specific streams 
         /*
         {
@@ -66,8 +45,8 @@ const config: Config = {
         */
         {
             id: '41',
-            name: 'Kiss FM',
-            url: 'https://live.kissfm.ro/kissfm.aacp',
+            name: 'Europa FM',
+            url: 'https://astreaming.edi.ro:8443/europafm_aacp48k',
             isRadio: true,
             category: categories.Radio,
         },
@@ -79,32 +58,11 @@ const config: Config = {
             category: categories.Radio,
         },
         {
-            id: '75',
-            name: '324',
-            url: 'https://directes-tv-int.ccma.cat/live-origin/canal324-hls/master.m3u8',
-            isRadio: false,
-            category: categories.TVInt,
-        },
-        {
-            id: '70',
-            name: 'PrimaTV',
-            url: 'https://stream1.1616.ro:1945/prima/livestream/playlist.m3u8?wowzatokenhash=hOdIznDoakApEuQ8FaFI3yrJuBMZHqCB7B3cWTmRWsc=',
-            isRadio: false,
-            category: categories.TVRO,
-        },
-        {
             id: '120',
             name: 'RadioParadise',
             url: 'http://stream.radioparadise.com/aac-128',
             isRadio: true,
             category: categories.Radio,
-        },
-        {
-            id: '200',
-            name: 'VH1',
-            url: ' https://content.uplynk.com/channel/36953f5b6546464590d2fcd954bc89cf.m3u8',
-            isRadio: false,
-            category: categories.TVInt,
         },
 
        

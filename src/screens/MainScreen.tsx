@@ -1,15 +1,19 @@
 import './MainScreen.scss';
 import Time from './components/Time';
-import Weather from './components/Weather';
+// import Weather from './components/Weather';
+import WeatherExternal from './components/WeatherExternal';
+
+
 import {
     useState,
     useEffect,
 } from 'react';
 import config from '../config';
 
-const backgrounds = Array.from(Array(40).keys())
-    .map(index => `d${index + 1}.jpeg`
-    );
+const TOTAL_BACKGROUNDS = 167;
+const backgrounds = Array.from({ length: TOTAL_BACKGROUNDS }, (_, index) => `d${index + 1}.jpg`);
+
+console.log(backgrounds);
 
 const backgroundImageUpdateIntervalSeconds
     = config.backgroundImageUpdateIntervalSeconds;
@@ -33,13 +37,13 @@ function MainScreen() {
         className="MainScreen"
         style={{
             backgroundImage:
-                `url(${process.env.PUBLIC_URL}/backgrounds/${backgroundURL})`
+                `url(${process.env.PUBLIC_URL}/backgrounds_andrei/${backgroundURL})`
         }}>
         <div className="top" >
             <Time />
         </div>
         <div className="bottom">
-            <Weather />
+            <WeatherExternal />
         </div>
     </div>;
 }

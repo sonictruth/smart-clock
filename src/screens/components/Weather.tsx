@@ -34,7 +34,6 @@ function Weather(props: any) {
 
     return (
         <div className="Weather">
-            {!weather && <div>Loading...</div>}
             {weather && weather.current &&
                 (isSimple ?
                     <div>
