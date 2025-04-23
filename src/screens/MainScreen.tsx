@@ -13,8 +13,6 @@ import config from '../config';
 const TOTAL_BACKGROUNDS = 167;
 const backgrounds = Array.from({ length: TOTAL_BACKGROUNDS }, (_, index) => `d${index + 1}.jpg`);
 
-console.log(backgrounds);
-
 const backgroundImageUpdateIntervalSeconds
     = config.backgroundImageUpdateIntervalSeconds;
 
